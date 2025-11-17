@@ -1,0 +1,1126 @@
+---
+import { projects } from "../data/projects";
+
+// Pick which projects are "featured" (by slug, to avoid data duplication)
+const featuredSlugs = [
+  "mqtt-data-collection",
+  "job-switching-between-robots",
+  "predictive-model-concept-and-pipeline",
+  "smart-home-mobile-app",
+  "desktop-cloud-integration",
+  "interactive-3d-report",
+  "centralized-settings-diamond-software",
+  "asynchronous-logger-and-gui-panel",
+  "character-recognition-algorithm",
+];
+
+const featuredProjects = projects.filter((p) => featuredSlugs.includes(p.slug));
+const allProjects = projects;
+---
+
+<section id="projects" class="py-20 bg-[var(--color-background)]">
+  <!-- ===================== HEADER + TABS ===================== -->
+  <div class="text-center mb-10">
+    <h2 class="heading">
+      Projects
+    </h2>
+
+    <div id="projectsTabs" class="inline-flex items-center gap-3">
+      <button
+        id="btnFeatured"
+        class="tab tab--active"
+        type="button"
+        data-tab="featured"
+      >
+        Featured
+      </button>
+      <button id="btnAll" class="tab" type="button" data-tab="all">
+        All
+      </button>
+    </div>
+  </div>
+
+  <!-- ===================== FILTERS ===================== -->
+  <div class="max-w-7xl mx-auto px-4 mb-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 filters-grid">
+      <!-- Skill Filter -->
+      <div class="filter-block" data-filter="skill">
+        <button id="skillTrigger" class="filter-trigger" type="button">
+          <div class="filter-trigger-main">
+            <span id="skillLabel" class="filter-trigger-title">Skills</span>
+            <span id="skillCount" class="filter-count-pill" aria-hidden="true">0</span>
+          </div>
+          <svg class="filter-arrow" viewBox="0 0 20 20" aria-hidden="true"></svg>
+        </button>
+
+        <div class="filter-dropdown" id="skillDropdown"></div>
+      </div>
+
+      <!-- Company Filter -->
+      <div class="filter-block" data-filter="company">
+        <button id="companyTrigger" class="filter-trigger" type="button">
+          <div class="filter-trigger-main">
+            <span id="companyLabel" class="filter-trigger-title">Companies</span>
+            <span id="companyCount" class="filter-count-pill" aria-hidden="true">0</span>
+          </div>
+          <svg class="filter-arrow" viewBox="0 0 20 20" aria-hidden="true"></svg>
+        </button>
+
+        <div class="filter-dropdown" id="companyDropdown"></div>
+      </div>
+
+      <!-- Keyword Filter -->
+      <form autocomplete="on" class="filter-block keyword-block">
+        <div class="search-shell">
+          <div class="search-icon" aria-hidden="true"></div>
+          <input
+            id="filterSearch"
+            type="text"
+            placeholder="Search…"
+            class="search-input"
+            autocomplete="search"
+            autocapitalize="off"
+            spellcheck="false"
+          />
+          <button
+            id="clearSearch"
+            type="button"
+            class="search-clear"
+            aria-label="Clear search"
+          >
+            <span class="search-clear-icon">×</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================== PROJECTS GRID ===================== -->
+  <div class="max-w-7xl mx-auto px-4">
+    <div
+      id="projectsGrid"
+      class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 transition-opacity"
+    >
+      {featuredProjects.map((p) => (
+        <a
+          href={`/projects/${p.slug}`}
+          class="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-primary)] shadow-sm flex flex-col overflow-hidden
+                 hover:-translate-y-1 hover:shadow-hover hover:border-[var(--color-accent)]
+                 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-hover)]
+                 transition-all duration-300"
+        >
+          <!-- Image -->
+          <div class="h-48 bg-[var(--color-background)] overflow-hidden flex justify-center items-center">
+            <img
+              src={typeof p.image === "string" ? p.image : p.image.src}
+              alt={p.title}
+              class={typeof p.image === "object" && p.image.square
+                ? "max-h-full max-w-full object-contain"
+                : "w-full h-full object-cover"}
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Text -->
+          <div class="p-6 flex flex-col flex-1">
+            <h3 class="font-semibold text-lg leading-tight mb-3 text-[var(--color-primary)]">
+              {p.title}
+            </h3>
+            {p.company && (
+              <p class="text-sm font-medium text-[var(--color-tag-text)] mb-1">
+                {p.company}
+              </p>
+            )}
+            {p.period && (
+              <p class="text-xs text-[var(--color-secondary)] mb-3">
+                {p.period}
+              </p>
+            )}
+            <p class="text-sm text-[var(--color-muted)] flex-1 mb-4 line-clamp-3">
+              {p.summary}
+            </p>
+
+            {p.tags && p.tags.length > 0 && (
+              <div class="mt-4 flex flex-wrap gap-2">
+                {p.tags.map((t) => (
+                  <span
+                    class="inline-flex items-center h-[22px] px-2.5 text-xs font-medium rounded-full border transition-colors leading-[22px]"
+                    style="
+                      background-color: var(--secondary);
+                      color: var(--secondary-foreground);
+                      border-color: var(--secondary-border);
+                    "
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <!-- ===================== JSON PAYLOADS ===================== -->
+  <script
+    type="application/json"
+    id="data-featured"
+    set:html={JSON.stringify(featuredProjects)}
+  ></script>
+  <script
+    type="application/json"
+    id="data-all"
+    set:html={JSON.stringify(allProjects)}
+  ></script>
+
+  <!-- ===================== CLIENT-SIDE FILTERING LOGIC ===================== -->
+  <script>
+    const featured = JSON.parse(
+      document.getElementById("data-featured").textContent
+    );
+    const allProjects = JSON.parse(
+      document.getElementById("data-all").textContent
+    );
+
+    const gridEl = document.getElementById("projectsGrid");
+    const btnFeatured = document.getElementById("btnFeatured");
+    const btnAll = document.getElementById("btnAll");
+    const tabsContainer = document.getElementById("projectsTabs");
+
+    const skillTrigger = document.getElementById("skillTrigger");
+    const companyTrigger = document.getElementById("companyTrigger");
+    const skillDropdown = document.getElementById("skillDropdown");
+    const companyDropdown = document.getElementById("companyDropdown");
+    const skillLabel = document.getElementById("skillLabel");
+    const companyLabel = document.getElementById("companyLabel");
+    const skillCountEl = document.getElementById("skillCount");
+    const companyCountEl = document.getElementById("companyCount");
+    const inputSearch = document.getElementById("filterSearch");
+    const clearSearchBtn = document.getElementById("clearSearch");
+
+    // Derived skills & companies from allProjects
+    const skillSet = new Set();
+    const companySet = new Set();
+
+    // Normalization rules for grouping related skills
+    const SKILL_NORMALIZE = {
+      "C++": "C++",
+      "C++11": "C++",
+      "C++14": "C++",
+      "C++17": "C++",
+      "C++20": "C++",
+
+      "HTML": "Web (HTML/CSS/JS)",
+      "CSS": "Web (HTML/CSS/JS)",
+      "JavaScript": "Web (HTML/CSS/JS)",
+    };
+
+    allProjects.forEach((p) => {
+      if (p.company) companySet.add(p.company);
+      (p.tags || []).forEach((t) => {
+        const normalized = SKILL_NORMALIZE[t] || t;
+        skillSet.add(normalized);
+      });
+    });
+
+    // Count how many projects each normalized skill appears in
+    const skillFrequency = {};
+    allProjects.forEach((p) => {
+      const projectSkills = new Set();
+
+      (p.tags || []).forEach((t) => {
+        const normalized = SKILL_NORMALIZE[t] || t;
+        projectSkills.add(normalized);
+      });
+
+      // Count each normalized skill once per project.
+      projectSkills.forEach((s) => {
+        skillFrequency[s] = (skillFrequency[s] || 0) + 1;
+      });
+    });
+
+    // Get latest period date for each company
+    const companyLatest = {};
+
+    allProjects.forEach((p) => {
+        if (!p.company || !p.period) return;
+
+        // Extract year from period like “2020–2022” or “2023”
+        const match = p.period.match(/\d{4}/g);
+        if (!match) return;
+
+        const years = match.map(Number);
+        const lastYear = Math.max(...years);
+
+        companyLatest[p.company] = Math.max(companyLatest[p.company] || 0, lastYear);
+    });
+
+    const skillOptions = Array.from(skillSet).sort((a, b) => {
+      const diff = (skillFrequency[b] || 0) - (skillFrequency[a] || 0);
+      return diff !== 0 ? diff : a.localeCompare(b);
+    });
+
+    const companyOptions = Array.from(companySet).sort((a, b) => {
+      return (companyLatest[b] || 0) - (companyLatest[a] || 0);
+    });
+
+    // Multi-select state
+    let selectedSkills = new Set();
+    let selectedCompanies = new Set();
+    let mode = "featured"; // "featured" | "all"
+
+    // Helper: render project cards
+    function renderProjects(list) {
+      if (!gridEl) return;
+
+      const cards = list
+        .map((p) => {
+          const imgSrc =
+            typeof p.image === "string" ? p.image : p.image?.src || "";
+          const imgSquare =
+            typeof p.image === "object" && p.image?.square === true;
+
+          const tags =
+            p.tags && p.tags.length
+              ? p.tags
+                  .map(
+                    (t) => `
+              <span
+                class="inline-flex items-center h-[22px] px-2.5 text-xs font-medium rounded-full border transition-colors leading-[22px]"
+                style="
+                  background-color: var(--secondary);
+                  color: var(--secondary-foreground);
+                  border-color: var(--secondary-border);
+                "
+              >${t}</span>`
+                  )
+                  .join("")
+              : "";
+
+          return `
+          <a
+            href="/projects/${p.slug}"
+            class="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-primary)] shadow-sm flex flex-col overflow-hidden
+                   hover:-translate-y-1 hover:shadow-hover hover:border-[var(--color-accent)]
+                   focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-hover)]
+                   transition-all duration-300"
+          >
+            <div class="h-48 bg-[var(--color-background)] overflow-hidden flex justify-center items-center">
+              <img
+                src="${imgSrc}"
+                alt="${p.title}"
+                class="${
+                  imgSquare
+                    ? "max-h-full max-w-full object-contain"
+                    : "w-full h-full object-cover"
+                }"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="font-semibold text-lg leading-tight mb-3 text-[var(--color-primary)]">
+                ${p.title}
+              </h3>
+              ${
+                p.company
+                  ? `<p class="text-sm font-medium text-[var(--color-tag-text)] mb-1">${p.company}</p>`
+                  : ""
+              }
+              ${
+                p.period
+                  ? `<p class="text-xs text-[var(--color-secondary)] mb-3">${p.period}</p>`
+                  : ""
+              }
+              <p class="text-sm text-[var(--color-muted)] flex-1 mb-4 line-clamp-3">
+                ${p.summary || ""}
+              </p>
+              ${
+                tags
+                  ? `<div class="mt-4 flex flex-wrap gap-2">
+                       ${tags}
+                     </div>`
+                  : ""
+              }
+            </div>
+          </a>`;
+        })
+        .join("");
+
+      gridEl.style.opacity = "0";
+      requestAnimationFrame(() => {
+        gridEl.innerHTML = cards;
+        gridEl.style.opacity = "1";
+      });
+    }
+
+    // Tabs
+    function updateTabs() {
+      if (!tabsContainer) return;
+      const buttons = tabsContainer.querySelectorAll(".tab");
+      buttons.forEach((btn) => {
+        const tab = btn.getAttribute("data-tab");
+        const active = mode === tab;
+        if (active) {
+          btn.classList.add("tab--active");
+        } else {
+          btn.classList.remove("tab--active");
+        }
+      });
+    }
+
+    // Filtering logic
+    function projectMatchesFilters(p) {
+      // Skills: OR between selected skills, AND with other filters
+      if (selectedSkills.size > 0) {
+        const tags = p.tags || [];
+        const hasMatch = tags.some((t) => {
+          const normalized = SKILL_NORMALIZE[t] || t;
+          return selectedSkills.has(normalized);
+        });
+        if (!hasMatch) return false;
+      }
+
+      // Companies: OR between selected companies
+      if (selectedCompanies.size > 0) {
+        if (!selectedCompanies.has(p.company)) return false;
+      }
+
+      // Keyword
+      const keyword = (inputSearch?.value || "").trim().toLowerCase();
+      if (keyword) {
+        const haystack = (
+          (p.title || "") +
+          " " +
+          (p.summary || "") +
+          " " +
+          (p.company || "") +
+          " " +
+          (p.tags || []).join(" ")
+        )
+          .toLowerCase()
+          .trim();
+
+        if (!haystack.includes(keyword)) return false;
+      }
+
+      return true;
+    }
+
+    function applyFilters() {
+      const base = mode === "featured" ? featured : allProjects;
+      const filtered = base.filter(projectMatchesFilters);
+      renderProjects(filtered);
+      updateFilterLabels();
+      saveFilterState();
+    }
+
+    // Dropdown builders (with "Select all" row)
+    function buildDropdown(container, options, selectedSet, type) {
+      if (!container) return;
+
+      // Compute select-all visual state
+      const all = selectedSet.size === options.length && options.length > 0;
+      const none = selectedSet.size === 0;
+      const mixed = !all && !none;
+
+      const rows = [
+        `
+        <div class="filter-option filter-option-all"
+            data-type="${type}"
+            data-value="__all__"
+            data-state="${all ? "all" : mixed ? "mixed" : "none"}">
+          <div class="filter-checkbox"></div>
+          <span>Select all</span>
+        </div>
+        `,
+        ...options.map((opt, index) => {
+          const isSelected = selectedSet.has(opt);
+          const isStrong = type === "skill" && index < 10;
+          return `
+            <div class="filter-option ${isStrong ? 'strong-skill' : ''}"
+                data-type="${type}"
+                data-value="${opt}"
+                data-selected="${isSelected ? "true" : "false"}">
+              <div class="filter-checkbox"></div>
+              <span>${opt}</span>
+            </div>
+          `;
+        }),
+      ];
+
+      container.innerHTML = rows.join("");
+    }
+
+    function saveFilterState() {
+      const state = {
+        mode,
+        skills: Array.from(selectedSkills),
+        companies: Array.from(selectedCompanies),
+        keyword: inputSearch?.value || ""
+      };
+
+      localStorage.setItem("projectsFilters", JSON.stringify(state));
+    }
+
+    function updateFilterLabels() {
+      // Counts for Skills
+      if (skillCountEl) {
+        const n = selectedSkills.size;
+        if (n === 0) {
+          skillCountEl.style.display = "none";
+        } else {
+          skillCountEl.style.display = "inline-flex";
+          skillCountEl.textContent = String(n);
+        }
+      }
+
+      // Counts for Companies
+      if (companyCountEl) {
+        const n = selectedCompanies.size;
+        if (n === 0) {
+          companyCountEl.style.display = "none";
+        } else {
+          companyCountEl.style.display = "inline-flex";
+          companyCountEl.textContent = String(n);
+        }
+      }
+
+      // Rebuild dropdowns to keep checkboxes & "Select all" in sync
+      buildDropdown(skillDropdown, skillOptions, selectedSkills, "skill");
+      buildDropdown(
+        companyDropdown,
+        companyOptions,
+        selectedCompanies,
+        "company"
+      );
+    }
+
+    function restoreFilterState() {
+      const raw = localStorage.getItem("projectsFilters");
+      if (!raw) return;
+
+      try {
+        const saved = JSON.parse(raw);
+
+        if (saved.mode === "featured" || saved.mode === "all") {
+          mode = saved.mode;
+        }
+
+        if (Array.isArray(saved.skills)) {
+          selectedSkills = new Set(saved.skills);
+        }
+
+        if (Array.isArray(saved.companies)) {
+          selectedCompanies = new Set(saved.companies);
+        }
+
+        if (typeof saved.keyword === "string" && inputSearch) {
+          inputSearch.value = saved.keyword;
+          if (clearSearchBtn) {
+            clearSearchBtn.style.visibility =
+              saved.keyword.trim() ? "visible" : "hidden";
+          }
+        }
+      } catch (err) {
+        console.warn("Failed to restore filter state", err);
+      }
+    }
+
+    // Toggle dropdown visibility
+    function toggleDropdown(dropdownEl) {
+      if (!dropdownEl) return;
+      const isOpen = dropdownEl.style.display === "block";
+      dropdownEl.style.display = isOpen ? "none" : "block";
+    }
+
+    // Close all dropdowns
+    function closeAllDropdowns() {
+      if (skillDropdown) skillDropdown.style.display = "none";
+      if (companyDropdown) companyDropdown.style.display = "none";
+    }
+
+    // Animation helper: only on user toggle
+    function animateCheckmark(checkboxEl) {
+      if (!checkboxEl) return;
+      checkboxEl.classList.remove("checkbox-animate");
+      // force reflow
+      void checkboxEl.offsetWidth;
+      checkboxEl.classList.add("checkbox-animate");
+      setTimeout(() => {
+        checkboxEl.classList.remove("checkbox-animate");
+      }, 220);
+    }
+
+    // Event wiring: tabs
+    if (btnFeatured && btnAll) {
+      btnFeatured.addEventListener("click", () => {
+        if (mode === "featured") return;
+        mode = "featured";
+        updateTabs();
+        applyFilters();
+      });
+
+      btnAll.addEventListener("click", () => {
+        if (mode === "all") return;
+        mode = "all";
+        updateTabs();
+        applyFilters();
+      });
+    }
+
+    // Event wiring: triggers
+    if (skillTrigger) {
+      skillTrigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        toggleDropdown(skillDropdown);
+        if (companyDropdown) companyDropdown.style.display = "none";
+      });
+    }
+
+    if (companyTrigger) {
+      companyTrigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        toggleDropdown(companyDropdown);
+        if (skillDropdown) skillDropdown.style.display = "none";
+      });
+    }
+
+    // Handle option click (event delegation)
+    function handleDropdownClick(e) {
+      const option = e.target.closest(".filter-option");
+      if (!option) return;
+
+      const type = option.getAttribute("data-type");
+      const value = option.getAttribute("data-value");
+
+      // Update selection state
+      if (type === "skill") {
+        if (value === "__all__") {
+          if (selectedSkills.size > 0) {
+            selectedSkills = new Set();
+          } else {
+            selectedSkills = new Set(skillOptions);
+          }
+        } else {
+          if (selectedSkills.has(value)) {
+            selectedSkills.delete(value);
+          } else {
+            selectedSkills.add(value);
+          }
+        }
+      } else if (type === "company") {
+        if (value === "__all__") {
+          if (selectedCompanies.size > 0) {
+            selectedCompanies = new Set();
+          } else {
+            selectedCompanies = new Set(companyOptions);
+          }
+        } else {
+          if (selectedCompanies.has(value)) {
+            selectedCompanies.delete(value);
+          } else {
+            selectedCompanies.add(value);
+          }
+        }
+      }
+
+      // Apply filters & rebuild dropdowns
+      applyFilters();
+
+      // After rebuild, find the matching checkbox and animate it
+      requestAnimationFrame(() => {
+        const dropdown =
+          type === "skill" ? skillDropdown : companyDropdown;
+        if (!dropdown) return;
+
+        if (value === "__all__") {
+          const cb = dropdown.querySelector(
+            ".filter-option-all .filter-checkbox"
+          );
+          animateCheckmark(cb);
+        } else {
+          const options = dropdown.querySelectorAll(".filter-option");
+          for (const opt of options) {
+            if (opt.getAttribute("data-value") === value) {
+              const cb = opt.querySelector(".filter-checkbox");
+              animateCheckmark(cb);
+              break;
+            }
+          }
+        }
+      });
+    }
+
+    if (skillDropdown) {
+      skillDropdown.addEventListener("click", (e) => {
+        e.stopPropagation();
+        handleDropdownClick(e);
+      });
+    }
+
+    if (companyDropdown) {
+      companyDropdown.addEventListener("click", (e) => {
+        e.stopPropagation();
+        handleDropdownClick(e);
+      });
+    }
+
+    if (inputSearch) {
+      inputSearch.addEventListener("input", () => {
+        if (clearSearchBtn) {
+          clearSearchBtn.style.visibility =
+            inputSearch.value.trim().length > 0 ? "visible" : "hidden";
+        }
+        applyFilters();
+      });
+    }
+
+    if (clearSearchBtn && inputSearch) {
+      clearSearchBtn.addEventListener("click", () => {
+        inputSearch.value = "";
+        clearSearchBtn.style.visibility = "hidden";
+        applyFilters();
+        inputSearch.focus();
+      });
+      // initial state
+      clearSearchBtn.style.visibility = "hidden";
+    }
+
+    // Close dropdowns on outside click
+    document.addEventListener("click", () => {
+      closeAllDropdowns();
+    });
+
+    // Prevent Enter from navigating away + apply search.
+    if (inputSearch) {
+      inputSearch.addEventListener("input", () => {
+        if (clearSearchBtn) {
+          clearSearchBtn.style.visibility = inputSearch.value.trim().length > 0 ? "visible" : "hidden";
+        }
+      });
+
+      inputSearch.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();  // Stop navigation
+          applyFilters();      // Apply search
+          inputSearch.blur();  // Optional: remove focus
+        }
+      });
+    }
+
+    // Restore saved filters before first render
+    restoreFilterState();
+
+    // Initial dropdown build / tabs
+    updateFilterLabels();
+    updateTabs();
+    applyFilters();
+  </script>
+</section>
+
+<style>
+  #projects {
+    font-family: var(--font-primary);
+  }
+
+  #projectsGrid {
+    font-family: var(--font-secondary);
+  }
+
+  .heading {
+    text-align: center;
+    font-weight: 800;
+    font-size: clamp(1.75rem, 1.2rem + 2vw, 2.25rem);
+    color: var(--color-primary);
+    margin-bottom: 2.5rem;
+  }
+
+  /* ===================== TABS ===================== */
+  .tab {
+    padding: 0.55rem 1.1rem;
+    background: var(--color-button-default-bg);
+    color: var(--color-primary);
+    border-radius: 0.35rem;
+    border: 1px solid transparent;
+    border-color: var(--color-border-accent);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  .tab:hover {
+    background: var(--color-tag-bg);
+    border-color: var(--color-tag-bg);
+    color: var(--color-tag-text);
+  }
+
+  .tab--active {
+    background: var(--color-accent);
+    color: #fff !important;
+  }
+
+  .tab--active:hover {
+    background: var(--color-accent-hover);
+  }
+
+  /* ===================== FILTER BLOCKS ===================== */
+  .filter-block {
+    display: flex;
+    flex-direction: column;
+    position: relative; /* anchor dropdowns */
+    font-family: var(--font-secondary);
+  }
+
+  /* FILTER TRIGGERS (Skills / Companies) */
+  .filter-trigger {
+    width: 100%;
+    padding: 0.55rem 0.75rem;
+    background: var(--color-surface);
+    color: var(--color-primary);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    text-align: left;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.15s ease, border-color 0.15s ease;
+    outline: none;
+  }
+
+  .filter-trigger:hover {
+    background: color-mix(in oklab, var(--color-accent) 10%, white 90%);
+  }
+
+  .filter-trigger:focus-visible {
+    border-color: var(--color-accent);
+  }
+
+  .filter-trigger-main {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .filter-trigger-title {
+    font-weight: 600;
+  }
+
+  .filter-count-pill {
+    display: none; /* shown via JS when >0 */
+    min-width: 1.5rem;
+    padding: 0 0.45rem;
+    height: 1.3rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    #projects .filters-grid,
+    .filters-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      grid-auto-rows: auto;
+    }
+
+    /* Make the search bar span the whole row */
+    .filters-grid .keyword-block {
+      grid-column: 1 / -1 !important;
+    }
+  }
+
+  /* Dropdown arrow (22px, bold-ish) */
+  .filter-arrow {
+    width: 22px;
+    height: 22px;
+    background: var(--color-muted);
+
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.79289 9.2758C7.18342 8.88528 7.81658 8.88528 8.20711 9.2758L11.9116 12.9803C11.9604 13.0291 12.0396 13.0291 12.0884 12.9803L15.7929 9.2758C16.1834 8.88528 16.8166 8.88528 17.2071 9.2758C17.5976 9.66633 17.5976 10.2995 17.2071 10.69L13.5026 14.3945C12.6727 15.2244 11.3273 15.2244 10.4974 14.3945L6.79289 10.69C6.40237 10.2995 6.40237 9.66633 6.79289 9.2758Z' fill='currentColor'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.79289 9.2758C7.18342 8.88528 7.81658 8.88528 8.20711 9.2758L11.9116 12.9803C11.9604 13.0291 12.0396 13.0291 12.0884 12.9803L15.7929 9.2758C16.1834 8.88528 16.8166 8.88528 17.2071 9.2758C17.5976 9.66633 17.5976 10.2995 17.2071 10.69L13.5026 14.3945C12.6727 15.2244 11.3273 15.2244 10.4974 14.3945L6.79289 10.69C6.40237 10.2995 6.40237 9.66633 6.79289 9.2758Z' fill='currentColor'/%3E%3C/svg%3E");
+
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+
+  /* ===================== SEARCH BAR ===================== */
+  .keyword-block {
+    justify-content: flex-end;
+    font-family: var(--font-secondary);
+  }
+
+  .search-shell {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.55rem 0.75rem; /* same height as other filters */
+    border-radius: 10px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+
+  .search-shell:focus-within {
+    border-color: var(--color-accent);
+    background: var(--color-surface);
+  }
+
+  .search-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--color-muted);
+    background: currentColor;
+
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11 5C7.68629 5 5 7.68629 5 11C5 14.3137 7.68629 17 11 17C14.3137 17 17 14.3137 17 11C17 7.68629 14.3137 5 11 5ZM3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11C19 12.8487 18.3729 14.551 17.3199 15.9056L20.7071 19.2929C21.0976 19.6834 21.0976 20.3166 20.7071 20.7071C20.3166 21.0976 19.6834 21.0976 19.2929 20.7071L15.9056 17.3199C14.551 18.3729 12.8487 19 11 19C6.58172 19 3 15.4183 3 11Z' fill='currentColor'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11 5C7.68629 5 5 7.68629 5 11C5 14.3137 7.68629 17 11 17C14.3137 17 17 14.3137 17 11C17 7.68629 14.3137 5 11 5ZM3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11C19 12.8487 18.3729 14.551 17.3199 15.9056L20.7071 19.2929C21.0976 19.6834 21.0976 20.3166 20.7071 20.7071C20.3166 21.0976 19.6834 21.0976 19.2929 20.7071L15.9056 17.3199C14.551 18.3729 12.8487 19 11 19C6.58172 19 3 15.4183 3 11Z' fill='currentColor'/%3E%3C/svg%3E");
+
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+
+  /* Icons turn violet when active */
+  .search-shell:focus-within .search-icon,
+  .search-shell:focus-within .search-clear {
+    color: var(--color-accent);
+  }
+
+  .search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 0.9rem;
+    color: var(--color-primary);
+  }
+
+  .search-input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .search-input::placeholder {
+    color: var(--color-muted);
+  }
+
+  /* Hide native WebKit cancel button to avoid double X */
+  .search-input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+  }
+
+  /* Prevent persistent blue highlight after autocomplete selection */
+  .search-input::selection,
+  .search-input::-moz-selection {
+    background: transparent;
+  }
+
+  /* Remove Chrome's autofill selection blue highlight */
+  input:-internal-autofill-selected {
+    background-color: transparent !important;
+    background-image: none !important;
+    color: var(--color-primary) !important;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:focus {
+    background-color: var(--color-surface) !important;
+    box-shadow: 0 0 0px 1000px var(--color-surface) inset !important;
+    -webkit-text-fill-color: var(--color-primary) !important;
+  }
+
+  /* Clear button */
+  .search-clear {
+    width: 22px;
+    height: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+    padding: 0;
+
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  /* Actual “X” glyph */
+  .search-clear-icon {
+    display: block;
+    line-height: 0;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--color-muted);
+
+    /* vertical fine-tune WITHOUT moving the focus ring */
+    transform: translateY(-3px);
+
+    transition: transform 0.15s ease, color 0.15s ease;
+  }
+
+  /* Hover: bigger + lighter violet */
+  .search-clear:hover .search-clear-icon {
+    color: color-mix(in oklab, var(--color-accent) 70%, white 30%);
+    transform: translateY(-3px) scale(1.1);
+  }
+
+  /* When search has focus, keep icon violet */
+  .search-shell:focus-within .search-clear-icon {
+    color: var(--color-accent);
+  }
+
+  /* Keyboard focus ring: thin, centered, violet */
+  .search-clear:focus-visible {
+    outline: 1px solid var(--color-accent);
+    outline-offset: 1px;
+    border-radius: 6px;
+  }
+
+  /* ===================== DROPDOWN OVERLAY ===================== */
+  .filter-dropdown {
+    font-family: var(--font-secondary);
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 100%;
+    display: none;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    max-height: 260px;
+    overflow-y: auto;
+    z-index: 200;
+    padding: 4px 0;
+    box-shadow: 0 10px 30px color-mix(in oklab, var(--color-primary) 10%, transparent);
+  }
+
+  :global(.filter-dropdown .filter-option) {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  /* subtle hierarchy: children indented vs "Select all" */
+  :global(.filter-dropdown .filter-option.filter-option-all) {
+    padding-left: 12px;
+  }
+
+  :global(.filter-dropdown .filter-option:not(.filter-option-all)) {
+    padding-left: 24px; /* subtle indent for children */
+  }
+
+  :global(.filter-dropdown .filter-option:hover) {
+    background: color-mix(in oklab, var(--color-accent) 6%, transparent);
+  }
+
+  /* ===================== CHECKBOXES ===================== */
+  :global(.filter-dropdown .filter-option .filter-checkbox) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 20px;
+    height: 20px;
+
+    background: var(--color-surface);
+    border: 1.5px solid var(--color-border);
+    border-radius: 5px;
+
+    margin-right: 12px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+
+  /* Checked background */
+  :global(.filter-dropdown .filter-option[data-selected="true"] .filter-checkbox),
+  :global(.filter-option-all[data-state="all"] .filter-checkbox) {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  /* Checkmark shape */
+  :global(.filter-dropdown .filter-option[data-selected="true"] .filter-checkbox::after),
+  :global(.filter-option-all[data-state="all"] .filter-checkbox::after) {
+    content: "";
+    width: 18px;
+    height: 18px;
+    display: block;
+    background-color: #ffffff;
+
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4.736 12.389 9.362 17.179 18.761 7.295' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4.736 12.389 9.362 17.179 18.761 7.295' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  /* "Select all" — mixed (minus) */
+  :global(.filter-option-all[data-state="mixed"] .filter-checkbox) {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  :global(.filter-option-all[data-state="mixed"] .filter-checkbox::after) {
+    content: "";
+    width: 14px;
+    height: 2px;
+    background: #ffffff;
+    border-radius: 2px;
+  }
+
+  /* Animation class – only added on user toggle */
+  :global(.filter-dropdown .filter-option .filter-checkbox.checkbox-animate::after),
+  :global(.filter-option-all .filter-checkbox.checkbox-animate::after) {
+    transform-origin: 20% 50%;
+    animation: checkbox-draw 0.22s ease-out forwards;
+  }
+
+  /* Highlight strongest 10 skills */
+  :global(.filter-option.strong-skill) {
+    background: color-mix(in oklab, var(--color-accent) 10%, transparent);
+  }
+
+  :global(.filter-option.strong-skill:hover) {
+    background: color-mix(in oklab, var(--color-accent) 20%, transparent);
+  }
+
+  @keyframes checkbox-draw {
+    from {
+      transform: scaleX(0);
+      opacity: 0;
+    }
+    to {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+  }
+</style>

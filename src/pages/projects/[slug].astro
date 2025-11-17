@@ -1,0 +1,186 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { projects } from "../../data/projects";
+
+// Generate pages
+export async function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+const { project } = Astro.props;
+---
+
+<BaseLayout title={`${project.title} | Dmitry Grigorovich`}>
+  <article class="max-w-4xl mx-auto py-24 px-4 md:px-0 text-[var(--color-primary)]">
+    <h1 class="text-4xl font-bold mb-4 text-[var(--color-primary)]">{project.title}</h1>
+    {project.company && (
+      <p class="text-[var(--color-tag-text)] font-medium mb-1">{project.company}</p>
+    )}
+    {project.period && (
+      <p class="text-sm text-[var(--color-secondary)] mb-6">{project.period}</p>
+    )}
+
+    <!-- ✅ Tags -->
+    {project.tags && project.tags.length > 0 && (
+      <div class="flex flex-wrap gap-2 mb-8">
+        {project.tags.map((tag) => (
+          <span
+            class="inline-flex items-center h-[22px] px-2.5 text-xs font-medium rounded-full border transition-colors leading-[22px]"
+            style="
+              background-color: var(--secondary);
+              color: var(--secondary-foreground);
+              border-color: var(--secondary-border);
+            "
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
+
+    <!-- ✅ Image Gallery -->
+    {project.images && project.images.length > 0 && (
+      <div class="relative mb-10">
+        <div class="swiper mySwiper rounded-xl overflow-hidden shadow-md">
+          <div class="swiper-wrapper">
+            {project.images.map((img) => (
+              <div class="swiper-slide flex justify-center items-center bg-gray-100">
+                <img
+                  src={img.src}
+                  alt={project.title}
+                  class={[
+                    "block pointer-events-none", // ensures buttons above always capture clicks
+                    img.square
+                      ? "max-h-[450px] max-w-full object-contain"
+                      : "w-full h-[450px] object-cover"
+                  ].join(" ")}
+                  loading={img.src.endsWith(".gif") ? "eager" : "lazy"}
+                />
+              </div>
+            ))}
+          </div>
+
+          {project.images.length > 1 && (
+            <>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+              <div class="swiper-pagination"></div>
+            </>
+          )}
+        </div>
+      </div>
+    )}
+
+    <!-- ✅ Content sections -->
+    <section class="space-y-8">
+      {project.overview && (
+        <div>
+          <h2 class="text-xl font-semibold mb-3 text-[var(--color-primary)]">Overview</h2>
+          <div class="leading-relaxed text-[var(--color-body)] space-y-4" set:html={project.overview}></div>
+        </div>
+      )}
+
+      {project.achievements && project.achievements.length > 0 && (
+        <div>
+          <h2 class="text-xl font-semibold mb-3 text-[var(--color-primary)]">Key Achievements</h2>
+          <ul
+            class="list-disc list-outside space-y-1 text-[var(--color-body)] pl-6 border-l-2 marker:text-[var(--color-tag-text)]"
+            style="border-color: var(--color-border-accent);"
+          >
+            {project.achievements.map((item) => (
+              <li class="ml-2" set:html={item}></li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {project.result && (
+        <div>
+          <h2 class="text-xl font-semibold mb-3 text-[var(--color-primary)]">Result</h2>
+          <div class="leading-relaxed text-[var(--color-body)]" set:html={project.result}></div>
+        </div>
+      )}
+    </section>
+
+    <!-- Back button -->
+    <div class="mt-12">
+      <a
+        href="/#projects"
+        class="inline-flex items-center text-sm font-medium"
+        style="color: var(--color-link);"
+        onmouseover="this.style.color='var(--color-link-hover)'"
+        onmouseout="this.style.color='var(--color-link)'"
+      >
+        ← Back to Projects
+      </a>
+    </div>
+  </article>
+
+  <!-- Swiper init -->
+  <script type="module">
+    import Swiper from "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs";
+
+    function initOne(el) {
+      if (!el || el._swiper) return;
+
+      const slides = el.querySelectorAll(".swiper-slide");
+      const hasMultiple = slides.length > 1;
+
+      const nextEl = el.querySelector(".swiper-button-next");
+      const prevEl = el.querySelector(".swiper-button-prev");
+      const pagEl  = el.querySelector(".swiper-pagination");
+
+      // ✅ Build config conditionally to avoid passing undefined objects
+      const config = {
+        slidesPerView: 1,
+        loop: hasMultiple,
+        spaceBetween: 20,
+        allowTouchMove: hasMultiple, // disables drag if only one slide
+      };
+
+      if (hasMultiple) {
+        config.navigation = { nextEl, prevEl };
+        config.pagination = { el: pagEl, clickable: true };
+        config.autoplay = {
+          delay: 5000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        };
+      }
+
+      const swiper = new Swiper(el, config);
+
+      // ✅ Only bind controls if multiple slides exist
+      if (hasMultiple) {
+        nextEl?.addEventListener("click", (e) => {
+          e.stopPropagation();
+          swiper.slideNext();
+        });
+        prevEl?.addEventListener("click", (e) => {
+          e.stopPropagation();
+          swiper.slidePrev();
+        });
+      } else {
+        nextEl?.classList.add("hidden");
+        prevEl?.classList.add("hidden");
+        pagEl?.classList.add("hidden");
+      }
+
+      el._swiper = swiper;
+    }
+
+    function initAll() {
+      document.querySelectorAll(".mySwiper").forEach(initOne);
+    }
+
+    window.addEventListener("load", initAll);
+    document.addEventListener("astro:page-load", initAll);
+  </script>
+</BaseLayout>

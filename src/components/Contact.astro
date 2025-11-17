@@ -1,0 +1,207 @@
+---
+// Contacts.astro
+---
+
+<section id="contact" class="contact-section py-24">
+  <div class="inner mx-auto px-4">
+    <div class="max-w-2xl mx-auto text-center">
+
+      <h2 class="contact-heading">Get In Touch</h2>
+
+      <p class="contact-subtitle">
+        I'm open to discussing new opportunities, collaborations, and challenging engineering projects – or even just to say a friendly hello.
+      </p>
+
+      <div class="contact-card">
+        <div class="contact-buttons">
+
+          <!-- Email -->
+          <a href="mailto:dmitry.grigorovich7@gmail.com"
+             class="btn btn-primary contact-btn">
+            <span class="icon icon-email" aria-hidden="true"></span>
+            dmitry.grigorovich7@gmail.com
+          </a>
+
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/dmitry-grigorovich/"
+             target="_blank" rel="noopener noreferrer"
+             class="btn btn-outline contact-btn">
+            <span class="icon icon-linkedin"></span>
+            LinkedIn
+          </a>
+
+          <!-- GitHub -->
+          <a href="https://github.com/Naguales"
+             target="_blank" rel="noopener noreferrer"
+             class="btn btn-outline contact-btn">
+            <span class="icon icon-github"></span>
+            GitHub
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="inner-footer">
+    <p class="footer-text">
+      © 2025 Dmitry Grigorovich. Senior Software Engineer.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .contact-section {
+    width: 100vw;
+    padding: 0;
+
+    margin-left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--color-background) 99%, var(--color-accent-hover) 3%) 0%,
+      color-mix(in oklab, var(--color-background) 93%, var(--color-accent) 7%) 50%,
+      color-mix(in oklab, var(--color-background) 90%, var(--color-accent) 10%) 100%
+    );
+  }
+
+  .contact-section .inner {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 1.6rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Title */
+  .contact-heading {
+    font-size: clamp(2rem, 1.4rem + 2vw, 2.5rem);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  /* Subtitle */
+  .contact-subtitle {
+    max-width: 40rem;
+    margin: 0 auto 3rem;
+    font-family: var(--font-secondary);
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.2rem);
+    line-height: 1.55;
+    color: var(--color-muted);
+  }
+
+  /* Card Wrapper */
+  .contact-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 2.5rem 1.5rem;
+    box-shadow: 0 6px 20px color-mix(in oklab, var(--color-primary) 8%, transparent);
+  }
+
+  /* Button Layout */
+  .contact-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Buttons */
+  .contact-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.6rem;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+
+  /* Masked icons */
+  .icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    background-color: currentColor;
+  }
+
+  .icon-github    { mask-image: url('../assets/github.svg'); }
+  .icon-linkedin  { mask-image: url('../assets/linkedin.svg'); }
+  .icon-email     { mask-image: url('../assets/email.svg'); }
+
+  /* Desktop alignment */
+  @media (min-width: 640px) {
+    .contact-buttons {
+      flex-direction: row;
+      justify-content: center;
+    }
+    .contact-btn {
+      width: auto;
+    }
+  }
+
+  .btn {
+    font-weight: 600;
+    border: 1px solid transparent;
+  }
+
+  .btn-primary {
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-accent-hover);
+  }
+
+  .btn-outline {
+    background: var(--color-surface);
+    border-color: var(--color-border);
+    color: var(--color-primary);
+  }
+
+  .btn-outline:hover {
+    background: var(--color-tag-bg);
+    color: var(--color-tag-text);
+  }
+
+  /* Footer */
+  .footer {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+
+    border-top: 1px solid var(--color-border);
+    padding: 2rem 0;
+    background: var(--color-background);
+  }
+
+  .inner-footer {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    text-align: center;
+  }
+
+  .footer-text {
+    color: var(--color-muted);
+    font-family: var(--font-secondary);
+    font-size: 0.95rem;
+  }
+</style>

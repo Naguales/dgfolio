@@ -1,0 +1,108 @@
+/* ==========================================================
+   🎨 Theme System — Violet Variant)
+   ========================================================== */
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+  font-variation-settings: 'opsz' auto; 
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+  font-variation-settings: 'opsz' auto; 
+}
+
+:root {
+  /* === 🌈 Core Brand Palette === */
+  --color-primary: oklch(0.15 0.02 270);         /* main text / titles (deep violet-charcoal) */
+  --color-secondary: oklch(0.35 0.05 295);       /* headings / metadata (soft violet) */
+  --color-body: oklch(0.45 0.02 275);            /* normal text — readable violet-gray */
+  --color-muted: oklch(0.60 0.02 270);           /* secondary text / info lines */
+  --color-background: oklch(0.98 0.01 290);      /* page background (violet-tinted white) */
+  --color-surface: oklch(0.99 0.005 290);        /* cards, elevated surfaces */
+  --color-border: oklch(0.93 0.02 290);          /* neutral dividers and outlines */
+  --color-border-accent: oklch(0.90 0.04 295);   /* subtle violet border (e.g., achievements) */
+
+  /* === 💜 Accent / Interaction === */
+  --color-accent: oklch(0.6 0.20 295);           /* interactive violet (buttons, links) */
+  --color-accent-hover: oklch(0.55 0.23 295);    /* hover variant */
+  --color-accent-light: oklch(0.85 0.05 295);    /* light backgrounds or highlights */
+
+  /* === 🏷️ Tags / Pills === */
+  --color-tag-bg: oklch(0.943 0.029 294.588);    /* soft lavender */
+  --color-tag-border: oklch(0.894 0.057 293.283);
+  --color-tag-text: oklch(0.491 0.27 292.581);   /* vivid violet */
+
+  /* === ⚙️ Components / Utility === */
+  /* The background for a normal/default, enabled, clickable button. */
+  --color-button-default-bg: color-mix(in oklab, #ffffff 70%, var(--color-surface) 30%);
+
+  /* This calculates the scrollbar width in pixels (e.g., 100vw - 100% = 17px) */
+  --scrollbar-width: calc(100vw - 100%);
+  
+  /* === 🔗 Links === */
+  --color-link: var(--color-tag-text);
+  --color-link-hover: oklch(0.45 0.25 292.581);
+
+  /* === ✅ Semantic System === */
+  --color-success: oklch(0.75 0.17 150);         /* fresh green */
+  --color-success-bg: oklch(0.94 0.05 150);
+  --color-warning: oklch(0.85 0.18 80);          /* soft yellow */
+  --color-warning-bg: oklch(0.96 0.07 80);
+  --color-error: oklch(0.65 0.24 25);            /* warm coral red */
+  --color-error-bg: oklch(0.94 0.06 25);
+  --color-info: oklch(0.78 0.18 250);            /* cool blue accent */
+  --color-info-bg: oklch(0.93 0.05 250);
+
+  /* === 🧠 Typography === */
+  --font-primary: 'Manrope', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-secondary: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Menlo, monospace;
+
+  /* === 🧱 Shadows & Elevation === */
+  --shadow-soft: 0 4px 10px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 6px 14px rgba(0, 0, 0, 0.08);
+  --shadow-deep: 0 8px 20px rgba(0, 0, 0, 0.10);
+
+  /* === 🧩 Gradients === */
+  --gradient-primary: linear-gradient(90deg, oklch(0.6 0.2 295), oklch(0.55 0.23 305));
+  --gradient-surface: linear-gradient(180deg, #fff 0%, oklch(0.98 0.01 290) 100%);
+}
+
+/* ==========================================================
+   🌙 Dark Mode Foundation (optional — auto by system setting)
+   ========================================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: oklch(0.13 0.02 270);
+    --color-surface: oklch(0.18 0.02 270);
+    --color-primary: oklch(0.90 0.03 270);
+    --color-secondary: oklch(0.75 0.05 295);
+    --color-body: oklch(0.82 0.02 275);
+    --color-muted: oklch(0.65 0.02 275);
+    --color-border: oklch(0.25 0.01 270);
+    --color-border-accent: oklch(0.35 0.04 295);
+
+    --color-tag-bg: oklch(0.25 0.04 295);
+    --color-tag-border: oklch(0.35 0.05 295);
+    --color-tag-text: oklch(0.82 0.22 295);
+
+    --color-accent: oklch(0.70 0.25 295);
+    --color-accent-hover: oklch(0.75 0.23 295);
+  }
+}
+
+/* ==========================================================
+   🔤 Font Preview Helpers (optional dev mode)
+   ========================================================== */
+.font-primary { font-family: var(--font-primary); }
+.font-secondary { font-family: var(--font-secondary); }
+.font-mono { font-family: var(--font-mono); }

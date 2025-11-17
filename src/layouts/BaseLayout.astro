@@ -1,0 +1,79 @@
+---
+import "../styles/global.css";     // ✅ this triggers Tailwind processing
+
+const {
+  title = "Dmitry Grigorovich | Senior Software Engineer (C++ / Qt / UI/UX)",
+  description = "Portfolio of Dmitry Grigorovich — senior software engineer specializing in modern C++, Qt (Widgets & WebEngine), high-performance desktop applications, interactive visualization, and scalable software architecture.",
+  image = "/og/og-preview.png",
+  url = "https://dgrigorovich.com"
+} = Astro.props;
+---
+
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    
+    <link rel="canonical" href={Astro.site + Astro.url.pathname} />
+
+    <!-- Keywords (lightweight, optional but helpful) -->
+    <meta
+      name="keywords"
+      content="C++, Qt, Software Engineer, Cross-platform, UI/UX, Desktop Applications, C++20, WebEngine, Widgets, Architecture"
+    />
+
+    <!-- OpenGraph (LinkedIn, Facebook, etc.) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Dmitry Grigorovich — Portfolio Preview" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preload" href="/fonts/Manrope-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="/fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Dmitry Grigorovich",
+      "jobTitle": "Senior Software Engineer",
+      "url": "https://dgrigorovich.com",
+      "image": "https://dgrigorovich.com/og-preview.png",
+      "sameAs": [
+        "https://linkedin.com/in/dmitry-grigorovich",
+        "https://github.com/Naguales"
+      ],
+      "knowsAbout": [
+        "C++", "Qt", "Cross-platform Development",
+        "UI/UX", "Desktop Applications", "Software Architecture"
+      ],
+      "description": "{description}"
+    }
+    </script>
+  </head>
+  <body class="bg-background text-text font-sans antialiased">
+    <main class="max-w-7xl mx-auto px-6 md:px-12">
+      <slot />
+    </main>
+  </body>
+</html>
