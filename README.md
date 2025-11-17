@@ -7,11 +7,11 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
 A modern, high-performance portfolio built with **Astro**,
-**TypeScript**, and tailored custom UI components, showcasing selected
+**JavaScript**, and tailored custom UI components, showcasing selected
 professional software projects in C++, Qt, UI/UX, and system-level
 development.
 
-**Live website → dgrigorovich.com**
+**Live website → [dgrigorovich.com](https://www.dgrigorovich.com)**
 
 
 # 📑 Table of Contents
