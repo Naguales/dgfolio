@@ -2,7 +2,7 @@
 
 This document lists all third-party software components and assets used in this project, along with their respective licenses and attribution information, as required by their terms.
 
-## Lucide Line Icons
+## Icons
 
 The following icons are sourced from the [Lucide Icon collection](https://lucide.dev) and are licensed under the MIT License.
 
