@@ -1,4 +1,4 @@
-# Personal Portfolio -- Dmitry Grigorovich
+# Personal Portfolio - Dmitry Grigorovich
 
 ![Astro](https://img.shields.io/badge/Astro-4.0-blueviolet?logo=astro)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES2023-yellow?logo=javascript)
