@@ -51,13 +51,17 @@ Creative Commons Zero v1.0 Universal
 
 This is a human-readable summary of the Legal Code (read the full text to know the exact terms).
 
-The person who associated a work with this deed has dedicated the work to the public domain by waiving all of his or her rights to the work worldwide under copyright law, including all related and neighboring rights, to the extent allowed by law.
+The person who associated a work with this deed has dedicated the work to the public domain 
+by waiving all of his or her rights to the work worldwide under copyright law, 
+including all related and neighboring rights, to the extent allowed by law.
 
-You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. See Other Information below.
+You can copy, modify, distribute and perform the work, even for commercial purposes, 
+all without asking permission. See Other Information below.
 
 Other Information
 * In no way are the patent or trademark rights of any person affected by CC0.
 * Anyone who uses the work does not need to attribute the creator.
-* Unless expressly stated otherwise, the person who associated a work with this deed makes no warranties about the work and disclaims liability for all uses of the work, to the fullest extent permitted by applicable law.
+* Unless expressly stated otherwise, the person who associated a work with this deed makes no warranties 
+about the work and disclaims liability for all uses of the work, to the fullest extent permitted by applicable law.
 * When using or citing the work, you should not imply endorsement by the author or the affirmer.
 ```
