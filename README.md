@@ -30,11 +30,11 @@ development.
 
 ## 🚀 Tech Stack
 
--   Astro 4\
+-   Astro 4
 -   JavaScript 
--   Tailwind / Custom CSS architecture\
--   Client-side filtering (skills, companies, search)\
--   Responsive, accessibility-friendly components\
+-   Tailwind / Custom CSS architecture
+-   Client-side filtering (skills, companies, search)
+-   Responsive, accessibility-friendly components
 -   Optimized images & lazy loading
 
 
@@ -63,9 +63,10 @@ npm run build
 
 Generates optimized build in `/dist`.
 
-Astro automatically: - Minifies HTML, CSS, JS\
-- Tree-shakes unused code\
-- Creates asset hashes\
+Astro automatically:
+- Minifies HTML, CSS, JS
+- Tree-shakes unused code
+- Creates asset hashes
 - Prerenders pages for static delivery
 
 ## 🌐 Deploying to Vercel
@@ -74,8 +75,9 @@ Astro automatically: - Minifies HTML, CSS, JS\
 
 Push project → Import repo into Vercel → Done.
 
-**Vercel auto-detected settings:** - Framework: **Astro**\
-- Build Command: **npm run build**\
+**Vercel auto-detected settings:**
+- Framework: **Astro**
+- Build Command: **npm run build**
 - Output Directory: **dist**
 
 ### **Option B --- Manual Deployment**
