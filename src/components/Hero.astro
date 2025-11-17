@@ -1,5 +1,7 @@
 ---
 // Hero.astro
+
+import myPhoto from '../assets/my-photo.png';
 ---
 
 <section id="hero" class="hero">
@@ -15,7 +17,7 @@
       <!-- Avatar -->
       <div class="hero-avatar">
         <div class="hero-avatar-inner">
-          <img src="/src/assets/my-photo.png" alt="Dmitry Grigorovich" />
+          <img src={myPhoto.src} alt="Dmitry Grigorovich" />
         </div>
       </div>
 

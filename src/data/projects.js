@@ -1,10 +1,94 @@
+// src/data/projects.js
+import mqttImage from "../assets/project-mqtt.png";
+import toolOptImage from "../assets/project-tool-optimization.png";
+import trussDataImage from "../assets/project-truss-data.png";
+import jobSwitchingRobotsImage from "../assets/job-switching-robots.png";
+import jobSwitchingRobotsGif from "../assets/job-switching-robots-animation.gif";
+import jobSwitchingRobotsLists from "../assets/job-switching-robots-lists.png";
+import ubuntuPortImage from "../assets/ubuntu-port-automatic-truss-line-sw.png";
+
+import svgGeneratorOverview from "../assets/svg-generator-overview.png";
+import svgGeneratorSimpleReport from "../assets/svg-generator-simple-report.png";
+import svgGeneratorCrownAngleRefract from "../assets/svg-generator-crown-angle-report-refract.png";
+import svgGeneratorCrownAngleReport from "../assets/svg-generator-crown-angle-report.png";
+import svgGeneratorPlotLengthAxisSym from "../assets/svg-generator-plot-length-axis-sym.png";
+import remainingDepthChart from "../assets/remaining-depth-chart.png";
+import sawingRecognitionTestSystem from "../assets/sawing-recognition-test-system.png";
+import sawingRecognitionTestSystemBatch from "../assets/sawing-recognition-test-system-batch-mode.png";
+import predictiveModelPipeline from "../assets/predictive-model-pipeline.png";
+import galahadAutostopBlocking from "../assets/galahad-autostop-blocking.png";
+import galahadAutostopPolished from "../assets/galahad-autostop-polished.png";
+
+import danfossIcp from "../assets/danfoss-icp.jpg";
+import danfossFrequencyConverter from "../assets/danfoss-frequency-converter.png";
+import eduFileCreator from "../assets/edu-file-creator.png";
+import eduFileCreator1 from "../assets/edu-file-creator-1.png";
+import smartHomeApp from "../assets/smart-home-app.png";
+import smartHomeApp1 from "../assets/smart-home-app-1.png";
+
+import facetTypesUi from "../assets/facet-types-ui.png";
+import semipolishReport from "../assets/semipolish-report.png";
+import comparativeI3dDistances from "../assets/comparative-i3d-distances.png";
+import cutwiseCloud from "../assets/cutwise-cloud.png";
+import cutwiseLoginAnimation from "../assets/cutwise-login-animation.gif";
+import cutwiseLoginDialog from "../assets/cutwise-login-dialog.png";
+import supportEnhanceReport from "../assets/support-enhance-report-generation-module.png";
+import modelsComparisonEngine from "../assets/models-comparison-engine.png";
+import comparativeReportOval from "../assets/comparative-report-oval.png";
+import facetTypesOval from "../assets/facet-types-oval.png";
+import solutionsReport from "../assets/solutions-report.png";
+import girdleThicknessI3d from "../assets/diamond-girdle-thickness-i3d.png";
+import comparisonScannedModelsReport from "../assets/comparison-scanned-models-report.png";
+import comparisonScannedModelsReportBrief from "../assets/comparison-scanned-models-report-brief.png";
+import facetsMultiSelectionToolModel from "../assets/facets-multi-selection-tool-model.png";
+import facetsMultiSelectionToolLegend from "../assets/facets-multi-selection-tool-legend.png";
+import polishReportCylinder from "../assets/polish-report-cylinder.png";
+import interactive3dReport from "../assets/interactive-3d-report.png";
+import facetingReport from "../assets/faceting-report.png";
+import facetingReportOval from "../assets/faceting-report-oval-pavilion-main-wing.png";
+import settingsDialogReportButtons from "../assets/settings-dialog-report-buttons-page.png";
+import settingsDialogPostScanExport from "../assets/settings-dialog-post-scan-export-page.png";
+import settingsDialogPostScanActions from "../assets/settings-dialog-post-scan-actions-page.png";
+import settingsDialogScanningGeneral from "../assets/settings-dialog-scanning-general-page.png";
+import settingsDialogShortcuts from "../assets/settings-dialog-shortcuts-page.png";
+import standardReport from "../assets/standard-report.png";
+import standardReportTooltip from "../assets/standard-report-tooltip.png";
+import asynchronousLogger from "../assets/asynchronous-logger.png";
+import asynchronousLoggerFilter from "../assets/asynchronous-logger-filter-completer.png";
+import interactive3dReportsClient from "../assets/interactive-3d-reports-client.png";
+import interactive3dReportsClientContextMenu from "../assets/interactive-3d-reports-client-context-menu.png";
+import interactive3dReportsClientSettings from "../assets/interactive-3d-reports-client-settings.png";
+
+import setTopBoxST from "../assets/set-top-box-st.png";
+import setTopBoxAli from "../assets/set-top-box-ali.jpg";
+import setTopBoxJtag from "../assets/set-top-box-jtag.jpg";
+import aerodynamicMeasurementsMain from "../assets/aerodynamic-measurements-main.png";
+import aerodynamicMeasurementsSettings from "../assets/aerodynamic-measurements-settings.png";
+import aerodynamicMeasurementsInstaller from "../assets/aerodynamic-measurements-installer.png";
+import lasMeasurementsOverview from "../assets/las-measurements-overview.png";
+import likaLd200 from "../assets/lika-ld200.png";
+import characterRecognition from "../assets/character-recognition.png";
+import characterRecognitionIssJoining from "../assets/character-recognition-iss-joining.jpg";
+import characterRecognitionImageProcessing from "../assets/character-recognition-image-processing-steps.png";
+import samsungSmartTvWidget from "../assets/samsung-smart-tv-widget.png";
+import portingDeviceDrivers from "../assets/porting-device-drivers.png";
+import tunerDemodHost from "../assets/tuner-demod-host.png";
+import portingDeviceDriversDemod from "../assets/porting-device-drivers-demod.jpg";
+import necKLineTasteIt2 from "../assets/nec-k-line-taste-it-2.png";
+import softwareEngineeringMicrocontrollers from "../assets/software-engineering-for-microcontrollers.jpg";
+import emma3slHdDvbTStb from "../assets/emma3sl-hd-dvb-t-stb.png";
+
+import solarPanelsResearchSoftware from "../assets/solar-panels-research-software.png";
+import confidentialityProtectionDataIntegrity from "../assets/confidentiality-protection-and-data-integrity.jpg";
+import testSystemForComputingComplex from "../assets/test-system-for-computing-complex.png";
+
 export const projects = [
   {
     slug: "mqtt-data-collection",
     title: "MQTT for Data Collection",
     company: "Trussmatic Oy, Tampere, Finland",
     period: "December 2024 – February 2025, September – October 2025",
-    image: { src: "/src/assets/project-mqtt.png", square: true },
+    image: { src: mqttImage.src, square: true },
     tags: ["C++20", "MQTT", "REST API", "Mosquitto", "CMake", "Docker", "Industrial Automation", "Ubuntu"],
     summary: "Developed MQTT-based data collection and communication system for Trussmatic’s automated roof truss production software.",
     overview: `<p>Developed and maintained an <strong>MQTT-based data collection and communication system</strong> for Trussmatic’s automated roof truss production platform. The work focused on aligning <strong>message schemas</strong> and <strong>topic structures</strong> to ensure consistent and reliable data exchange across distributed subsystems.</p>
@@ -17,7 +101,7 @@ export const projects = [
       "Authored comprehensive documentation covering configuration, setup, and data flow design.",
     ],
     result: "Delivered a robust, scalable, and transparent communication layer improving data reliability, observability, and integration efficiency across Trussmatic’s production environment.",
-    images: [{ src: "/src/assets/project-mqtt.png", square: true }],
+    images: [{ src: mqttImage.src, square: true }],
   },
 
   {
@@ -25,7 +109,7 @@ export const projects = [
     title: "Optimization System for Tool Placement in Truss Design",
     company: "Trussmatic Oy, Tampere, Finland",
     period: "May – August 2025",
-    image: { src: "/src/assets/project-tool-optimization.png", square: true },
+    image: { src: toolOptImage.src, square: true },
     tags: ["C++20", "Algorithms", "REST API", "Boost", "Multithreading"],
     summary: "Developed an intelligent system optimizing tool placement in automated truss design for higher efficiency and stability.",
     overview: `<p>Developed a <strong>calculation and optimization system</strong> to improve tool placement efficiency for various truss designs within Trussmatic’s automated production software. The algorithms intelligently determine the <strong>optimal number and positioning of web tools</strong> for each timber, ensuring resource-efficient and structurally valid truss configurations.</p>
@@ -37,7 +121,7 @@ export const projects = [
       "Fixed multithreading and synchronization issues in core calculation and analyzer modules.",
     ],
     result: "Delivered a smarter, faster, and more stable truss design system, improving calculation speed, tool utilization, and production efficiency.",
-    images: [{ src: "/src/assets/project-tool-optimization.png", square: true }],
+    images: [{ src: toolOptImage.src, square: true }],
   },
 
   {
@@ -45,7 +129,7 @@ export const projects = [
     title: "Redesigning Truss Data-Related Classes",
     company: "Trussmatic Oy, Tampere, Finland",
     period: "March – April 2025",
-    image: { src: "/src/assets/project-truss-data.png", square: true },
+    image: { src: trussDataImage.src, square: true },
     tags: ["C++20", "Ubuntu", "Software Architecture", "Google Test", "UML"],
     summary: "Redesigned Trussmatic’s data architecture to improve flexibility, modularity, and future scalability.",
     overview: `<p>Refactored and redesigned the <strong>Truss Data architecture</strong> for Trussmatic’s automated roof truss production software to improve flexibility, modularity, and maintainability. The new <strong>property system</strong> allows dynamic addition of attributes to truss components at any processing level – calculation, preprocessing, or AI integration – without modifying the core class hierarchy.</p>`,
@@ -57,7 +141,7 @@ export const projects = [
       "Added Google Test unit tests to ensure functionality and backward compatibility.",
     ],
     result: "Delivered a robust, extensible, and memory-safe foundation for truss data handling, simplifying maintenance and enabling future feature expansion.",
-    images: [{ src: "/src/assets/project-truss-data.png", square: true }],
+    images: [{ src: trussDataImage.src, square: true }],
   },
 
   {
@@ -66,7 +150,7 @@ export const projects = [
     company: "Trussmatic Oy, Tampere, Finland",
     period: "August – October 2024",
     category: "Desktop application development, System development",
-    image: { src: "/src/assets/job-switching-robots.png", square: true },
+    image: { src: jobSwitchingRobotsImage.src, square: true },
     tags: ["Qt", "C++20", "Boost", "REST API", "UI/UX", "Docker", "Ubuntu", "Industrial Automation", "Software Architecture", "UML"],
     summary: "Added drag-and-drop job transfer between robots, boosting flexibility and operator control.",
     overview: `<p>Implemented a new feature that allows operators to <strong>move truss production jobs between robots</strong> when automatic job allocation proves suboptimal. This improvement enhances production flexibility and operator control within Trussmatic’s automated roof truss manufacturing system.</p>`,
@@ -81,9 +165,9 @@ export const projects = [
     ],
     result: "Delivered a more intuitive and flexible production interface, enabling efficient real-time job management and optimization in automated truss lines.",
     images: [
-      { src: "/src/assets/job-switching-robots.png", square: true },
-      { src: "/src/assets/job-switching-robots-animation.gif", square: false },
-      { src: "/src/assets/job-switching-robots-lists.png", square: true },
+      { src: jobSwitchingRobotsImage.src, square: true },
+      { src: jobSwitchingRobotsGif.src, square: false },
+      { src: jobSwitchingRobotsLists.src, square: true },
     ],
   },
 
@@ -93,7 +177,7 @@ export const projects = [
     company: "Trussmatic Oy, Tampere, Finland",
     period: "May – July 2024",
     category: "Desktop application development, System development",
-    image: { src: "/src/assets/ubuntu-port-automatic-truss-line-sw.png", square: true, },
+    image: { src: ubuntuPortImage.src, square: true, },
     tags: ["C++20", "Boost", "Ubuntu", "Shell Scripting", "Docker", "PostgreSQL", "Multithreading"],
     summary: "Revived and completed the Ubuntu build of Trussmatic’s truss-line automation software, enabling stable cross-platform deployment.",
     overview: `<p>Worked on finalizing and stabilizing the <strong>Ubuntu port</strong> of Trussmatic’s <strong>fully automatic roof truss production system</strong>, originally developed for Windows. 
@@ -108,7 +192,7 @@ export const projects = [
       "Authored detailed developer and user documentation for Ubuntu deployment and operation."
     ],
     result: "Delivered a fully functional and maintainable Ubuntu version of Trussmatic’s automated production software, enabling true cross-platform development and testing alongside the Windows build.",
-    images: [{ src: "/src/assets/ubuntu-port-automatic-truss-line-sw.png", square: true }],
+    images: [{ src: ubuntuPortImage.src, square: true }],
   },
 
   {
@@ -117,7 +201,7 @@ export const projects = [
     company: "OctoNus Finland Oy Ltd, Tampere, Finland",
     period: "March – April 2024",
     category: "Desktop application development",
-    image: { src: "/src/assets/svg-generator-overview.png", square: true },
+    image: { src: svgGeneratorOverview.src, square: true },
     tags: ["C++17", "SVG", "2D Graphics", "Algorithms"],
     summary: "Implemented a C++ SVG generator for 3D diamond projections with labels and charts (≈70 verified outputs).",
     overview: `<p>Developed a feature to generate <strong>SVG images</strong> containing multiple 3D diamond model projections with <strong>text labels and charts</strong>. The system produces approximately <strong>70 verified SVG variations</strong> for reporting and analysis.</p>`,
@@ -129,11 +213,11 @@ export const projects = [
     ],
     result: "Delivered a maintainable SVG export system ensuring consistent, high-quality visuals across desktop, web, and analytics reports.",
     images: [
-      { src: "/src/assets/svg-generator-overview.png", square: true },
-      { src: "/src/assets/svg-generator-simple-report.png", square: true },
-      { src: "/src/assets/svg-generator-crown-angle-report-refract.png", square: true },
-      { src: "/src/assets/svg-generator-crown-angle-report.png", square: true },
-      { src: "/src/assets/svg-generator-plot-length-axis-sym.png", square: true },
+      { src: svgGeneratorOverview.src, square: true },
+      { src: svgGeneratorSimpleReport.src, square: true },
+      { src: svgGeneratorCrownAngleRefract.src, square: true },
+      { src: svgGeneratorCrownAngleReport.src, square: true },
+      { src: svgGeneratorPlotLengthAxisSym.src, square: true },
     ],
   },
   
@@ -143,7 +227,7 @@ export const projects = [
     period: "January – February 2024",
     category: "Web development",
     company: "OctoNus Finland Oy Ltd, Tampere, Finland",
-    image: { src: "/src/assets/remaining-depth-chart.png", square: true },
+    image: { src: remainingDepthChart.src, square: true },
     tags: ["HTML", "CSS", "JavaScript", "D3.js", "3D Visualization", "UI/UX"],
     summary: "Enhanced the Remaining Depth chart with interactivity and multi-resolution support using D3.js.",
     overview: `<p>Enhanced <strong>interactivity</strong> and adapted the Remaining Depth chart, created using D3.js and JavaScript, for multiple resolutions. This chart visually illustrates the <strong>distance between girdle facets</strong> observed in a scan and those outlined in a plan.</p>
@@ -156,7 +240,7 @@ export const projects = [
       "Optimized layout and scaling for integration into reports and analytical tools."
     ],
     result: "Delivered an interactive, resolution-adaptive Remaining Depth chart improving visualization accuracy and analysis of bruting precision.",
-    images: [{ src: "/src/assets/remaining-depth-chart.png", square: true }]
+    images: [{ src: remainingDepthChart.src, square: true }]
   },
 
   {
@@ -165,7 +249,7 @@ export const projects = [
     period: "November – December 2023",
     category: "Desktop application development, Automated test development",
     company: "OctoNus Finland Oy Ltd, Tampere, Finland",
-    image: { src: "/src/assets/sawing-recognition-test-system.png", square: true },
+    image: { src: sawingRecognitionTestSystem.src, square: true },
     tags: ["C++17", "Test Automation", "3D Visualization", "Algorithms"],
     summary: "Developed an automated test system for Recognition and Sawing Preplan generation, enabling batch testing and result analysis.",
     overview: `<p>The <strong>Sawing + Recognition automated test system</strong> was built to streamline testing for the new Recognition algorithm, which selectively ignores specific facets to improve <strong>3D model matching accuracy</strong>. It also automates validation of sawing preplan generation using batch processing for large datasets.</p>
@@ -179,8 +263,8 @@ export const projects = [
     ],
     result: "Delivered a robust, automated C++ testing framework enabling consistent validation and large-scale performance analysis of Recognition and Sawing components.",
     images: [
-      { src: "/src/assets/sawing-recognition-test-system.png", square: true },
-      { src: "/src/assets/sawing-recognition-test-system-batch-mode.png", square: true }
+      { src: sawingRecognitionTestSystem.src, square: true },
+      { src: sawingRecognitionTestSystemBatch.src, square: true }
     ]
   },
 
@@ -190,7 +274,7 @@ export const projects = [
     period: "March – October 2023",
     category: "Desktop application development, Web development",
     company: "OctoNus Finland Oy Ltd, Tampere, Finland",
-    image: { src: "/src/assets/predictive-model-pipeline.png", square: true },
+    image: { src: predictiveModelPipeline.src, square: true },
     tags: ["C++17", "Qt", "HTML", "CSS", "JavaScript", "UI/UX", "3D Visualization", "Algorithms", "Software Architecture", "UML"],
     summary: "Designed and implemented a predictive modeling pipeline and UI for virtual diamond processing stages with web integration.",
     overview: `<p>In the diamond production workflow, manufacturers rely on scan and virtual models at every technological stage. The <em>preplan</em> concept acts as a <strong>predictive virtual model</strong> anticipating outcomes for each step and enabling smooth data transfer across stages.</p>
@@ -207,9 +291,9 @@ export const projects = [
     ],
     result: "Implemented a complete predictive modeling pipeline in C++ and Qt, enabling seamless data transfer, interactive configuration, and realistic stage visualization.",
     images: [
-      { src: "/src/assets/predictive-model-pipeline.png", square: true },
-      { src: "/src/assets/galahad-autostop-blocking.png", square: true },
-      { src: "/src/assets/galahad-autostop-polished.png", square: true }
+      { src: predictiveModelPipeline.src, square: true },
+      { src: galahadAutostopBlocking.src, square: true },
+      { src: galahadAutostopPolished.src, square: true }
     ]
   },
 
@@ -219,7 +303,7 @@ export const projects = [
     period: "December 2022 – February 2023",
     category: "Embedded software development",
     company: "Proekspert AS, Tallinn, Estonia",
-    image: { src: "/src/assets/danfoss-icp.jpg", square: true },
+    image: { src: danfossIcp.src, square: true },
     tags: ["C", "C++", "Azure Pipelines", "JTAG"],
     summary: "Contributed to next-generation Danfoss control panel development – enhancing UI, optimizing memory, and refining embedded architecture.",
     overview: `<p>Contributed to development of a <strong>control panel for Danfoss frequency converters</strong>, devices that regulate motor speed for asynchronous, PM, and Synchronous Reluctance motors.</p>
@@ -232,7 +316,7 @@ export const projects = [
       "Contributed to integration testing and firmware stability improvements."
     ],
     result: "Contributed to ongoing development of the next-generation control panel, implementing and testing core components for future integration.",
-    images: [{ src: "/src/assets/danfoss-icp.jpg", square: true }]
+    images: [{ src: danfossIcp.src, square: true }]
   },
 
   {
@@ -241,7 +325,7 @@ export const projects = [
     period: "June – November 2022",
     category: "Embedded software development",
     company: "Proekspert AS, Tallinn, Estonia",
-    image: { src: "/src/assets/danfoss-frequency-converter.png", square: true },
+    image: { src: danfossFrequencyConverter.src, square: true },
     tags: ["C", "C++", "Azure Pipelines", "JTAG"],
     summary: "Developed embedded software for Danfoss iC7 converters, focusing on stability, resource efficiency, and integration.",
     overview: `<p>Contributed to <strong>embedded software development for Danfoss iC7 Series frequency converters</strong>, which control asynchronous, PM, and Synchronous Reluctance motors.</p>
@@ -254,7 +338,7 @@ export const projects = [
       "Collaborated with hardware teams using JTAG, Xilinx Vivado, and TRACE32 for debugging."
     ],
     result: "Improved the stability, efficiency, and maintainability of embedded software for Danfoss iC7 drives, supporting reliable operation across testing environments.",
-    images: [{ src: "/src/assets/danfoss-frequency-converter.png", square: true }]
+    images: [{ src: danfossFrequencyConverter.src, square: true }]
   },
 
   {
@@ -263,7 +347,7 @@ export const projects = [
     period: "January – May 2022",
     category: "Desktop application development",
     company: "Proekspert AS, Tallinn, Estonia",
-    image: { src: "/src/assets/edu-file-creator.png", square: true },
+    image: { src: eduFileCreator.src, square: true },
     tags: ["Qt", "C++14", "UI/UX"],
     summary: "Developed a Qt-based desktop tool for creating and editing a custom firmware file format for motor control systems.",
     overview: `<p>Designed and developed a Windows desktop application using Qt and C++ to create and manipulate a <strong>custom firmware file type</strong>. The format stores configuration options and binary data for asynchronous, PM, and Synchronous Reluctance motor firmware.</p>
@@ -276,8 +360,8 @@ export const projects = [
     ],
     result: "Delivered a working prototype of a firmware configuration tool simplifying creation and modification of proprietary binary file types.",
     images: [
-      { src: "/src/assets/edu-file-creator.png", square: true },
-      { src: "/src/assets/edu-file-creator-1.png", square: true }
+      { src: eduFileCreator.src, square: true },
+      { src: eduFileCreator1.src, square: true }
     ]
   },
 
@@ -287,7 +371,7 @@ export const projects = [
     period: "August 2021 – January 2022",
     category: "Mobile application development",
     company: "Proekspert AS, Tallinn, Estonia",
-    image: { src: "/src/assets/smart-home-app.png", square: true },
+    image: { src: smartHomeApp.src, square: true },
     tags: ["C++14", "QML", "Qt", "Qt WebSockets", "FlatBuffers", "Android", "iOS", "Mobile Development", "UI/UX", "Software Architecture"],
     summary: "Developed a cross-platform MVP for smart-home water heater control using Qt, QML, and C++.",
     overview: `<p>Developed a Minimum Viable Product (MVP) for a <strong>smart-home app managing water heaters</strong> for STIEBEL ELTRON GmbH &amp; Co. KG (Germany). Targeting <strong>Android and iOS</strong>, it used the Qt framework with QML for UI and C++ for core logic.</p>
@@ -300,8 +384,8 @@ export const projects = [
     ],
     result: "Delivered a stable cross-platform MVP demonstrating real-time control, data reliability, and a scalable UI foundation for future expansion.",
     images: [
-      { src: "/src/assets/smart-home-app.png", square: true },
-      { src: "/src/assets/smart-home-app-1.png", square: true }
+      { src: smartHomeApp.src, square: true },
+      { src: smartHomeApp1.src, square: true }
     ]
   },
 
@@ -311,7 +395,7 @@ export const projects = [
     period: "January – March 2021",
     category: "Application programming",
     company: "OctoNus Software, Moscow, Russia",
-    image: { src: "/src/assets/facet-types-ui.png", square: true },
+    image: { src: facetTypesUi.src, square: true },
     tags: ["QML", "Qt", "C++14", "3D Visualization", "UI/UX", "Software Architecture"],
     summary: "Migrated the ‘Facet Types’ 3D visualization module from QML to native Qt for improved performance and integration.",
     overview: `<p>Migrated the UI of the diamond model’s <strong>Facet Types module</strong> – responsible for 3D visualization and editing – from QML to native Qt (C++). This component is central to <em>HP Carbon</em> software for diamond scanning and analysis.</p>
@@ -322,7 +406,7 @@ export const projects = [
       "Enhanced customization and visualization of facet-type parameters."
     ],
     result: "Delivered a faster, more integrated Qt-native module with improved customization and performance for 3D diamond editing.",
-    images: [{ src: "/src/assets/facet-types-ui.png", square: true }]
+    images: [{ src: facetTypesUi.src, square: true }]
   },
 
   {
@@ -331,7 +415,7 @@ export const projects = [
     period: "October – December 2020",
     category: "Application programming, Web development",
     company: "OctoNus Software, Moscow, Russia",
-    image: { src: "/src/assets/semipolish-report.png", square: true },
+    image: { src: semipolishReport.src, square: true },
     tags: ["C++14", "GDI+", "2D Graphics", "3D Visualization", "Qt", "Qt WebEngine", "Algorithms", "HTML", "CSS", "JavaScript", "UI/UX", "Software Architecture"],
     summary: "Developed an interactive report system for controlling and visualizing the diamond Table polishing process.",
     overview: `<p>Designed and implemented the Semipolish Report – an HTML/CSS/JavaScript-based interface providing precise visual and numerical control of the <strong>table-facet polishing process</strong>. The Table facet acts as a window into the gem.</p>
@@ -344,7 +428,7 @@ export const projects = [
       "Integrated report viewer directly within the 3D Scene."
     ],
     result: "Delivered an interactive, visually rich reporting tool improving polishing precision and operator usability.",
-    images: [{ src: "/src/assets/semipolish-report.png", square: true }]
+    images: [{ src: semipolishReport.src, square: true }]
   },
 
   {
@@ -353,7 +437,7 @@ export const projects = [
     period: "September 2020",
     category: "Web development, 3D graphics, Algorithms, Application programming",
     company: "OctoNus Software, Moscow, Russia",
-    image: { src: "/src/assets/comparative-i3d-distances.png", square: true },
+    image: { src: comparativeI3dDistances.src, square: true },
     tags: ["HTML", "CSS", "JavaScript", "C++14", "3D Visualization", "Qt WebEngine", "Algorithms", "UI/UX"],
     summary: "Added interactive 3D visualization modes comparing facet distances between diamond models.",
     overview: `<p>The <strong>Comparative I3D Report</strong> (HTML/CSS/JavaScript) is a visualization tool that displays diamond models and parameters within an embedded 3D scene, leveraging <strong>Qt WebEngine</strong>.</p>
@@ -365,7 +449,7 @@ export const projects = [
       "Enhanced scene navigation and GUI responsiveness in Qt WebEngine."
     ],
     result: "Delivered an enhanced 3D comparison tool enabling precise geometric evaluation and model-selection optimization.",
-    images: [{ src: "/src/assets/comparative-i3d-distances.png", square: true }]
+    images: [{ src: comparativeI3dDistances.src, square: true }]
   },
 
   {
@@ -374,7 +458,7 @@ export const projects = [
     period: "May – August 2020",
     category: "Application programming, Web development",
     company: "OctoNus Software, Moscow, Russia",
-    image: { src: "/src/assets/cutwise-cloud.png", square: true },
+    image: { src: cutwiseCloud.src, square: true },
     tags: ["C++14", "Multithreading", "Software Architecture", "Qt", "UI/UX"],
     summary: "Developed a C++ and Qt integration layer connecting HP Carbon desktop software with the Cutwise cloud platform.",
     overview: `<p>Developed and implemented an integration architecture (C++) and GUI (Qt) connecting the company’s <em>HP Carbon</em> desktop application with the <a href="https://cutwise.com/" target="_blank">Cutwise cloud platform</a>.</p>
@@ -389,9 +473,9 @@ export const projects = [
     ],
     result: "Delivered a seamless link between local HP Carbon software and the Cutwise cloud, enabling automated data sharing and greater workflow transparency.",
     images: [
-      { src: "/src/assets/cutwise-cloud.png", square: true },
-      { src: "/src/assets/cutwise-login-animation.gif", square: true },
-      { src: "/src/assets/cutwise-login-dialog.png", square: true }
+      { src: cutwiseCloud.src, square: true },
+      { src: cutwiseLoginAnimation.src, square: true },
+      { src: cutwiseLoginDialog.src, square: true }
     ]
   },
 
@@ -401,7 +485,7 @@ export const projects = [
     period: "January – April 2020",
     category: "Application programming, Web development",
     company: "OctoNus Software, Moscow, Russia",
-    image: { src: "/src/assets/support-enhance -report-generation-module.png", square: true },
+    image: { src: supportEnhanceReport.src, square: true },
     tags: ["C++11", "HTML", "CSS", "JavaScript", "QML", "Qt", "MFC", "UI/UX"],
     summary:  "Enhanced the HP Carbon report generation module by adding new report types, improving visualization, and ensuring mobile compatibility.",
     overview: `<p>Enhanced the <strong>Report Generation Module</strong> within OctoNus’s <em>HP Carbon</em> desktop software for diamond scanning and processing on Windows. 
@@ -418,7 +502,7 @@ export const projects = [
       "Integrated visualization components more tightly with the overall HP Carbon workflow."
     ],
     result: "Delivered a more stable, feature-rich, and accessible reporting system with improved 3D visualization, better usability, and mobile-ready HTML reports.",
-    images: [{ src: "/src/assets/support-enhance -report-generation-module.png", square: true }]
+    images: [{ src: supportEnhanceReport.src, square: true }]
   },
 
   {
@@ -427,7 +511,7 @@ export const projects = [
     period: "November – December 2019",
     category: "Application programming",
     company: "OctoNus Software, Moscow, Russia",
-    image: { src: "/src/assets/models-comparison-engine.png", square: true },
+    image: { src: modelsComparisonEngine.src, square: true },
     tags: ["C++11", "Algorithms", "Multithreading", "UML"],
     summary: "Refactored and optimized the diamond model comparison engine to improve accuracy, performance, and multithreaded stability.",
     overview: `<p>Refactored and optimized the <strong>diamond model comparison engine</strong> written in <strong>C++</strong> within OctoNus’s diamond scanning and processing software to enhance its <strong>accuracy</strong>, <strong>performance</strong>, and <strong>scalability</strong>.</p>
@@ -443,8 +527,8 @@ export const projects = [
     ],
     result: "Delivered a more accurate, faster, and multithreaded comparison engine, improving analysis precision and responsiveness across the diamond processing software.",
     images: [
-      { src: "/src/assets/comparative-report-oval.png", square: true },
-      { src: "/src/assets/facet-types-oval.png", square: true },
+      { src: comparativeReportOval.src, square: true },
+      { src: facetTypesOval.src, square: true },
     ]
   },
 
@@ -454,7 +538,7 @@ export const projects = [
     period: "July – August 2019",
     category: "Application programming, Web development",
     company: "OctoNus Software, Moscow, Russia",
-    image: { src: "/src/assets/solutions-report.png", square: true },
+    image: { src: solutionsReport.src, square: true },
     tags: ["C++11", "Qt", "Qt WebEngine", "ReactJS", "HTML", "CSS", "JavaScript", "Multithreading", "UI/UX"],
     summary: "Developed a hybrid C++/Qt and ReactJS-based Solutions Report for viewing photorealistic diamond images and parameters in an interactive scene.",
     overview: `<p>Designed and developed the <strong>Solutions Report</strong> – an interactive reporting tool built with <strong>React</strong>, <strong>HTML/CSS/JavaScript</strong>, and <strong>Qt WebEngine</strong> for viewing photorealistic diamond imagery and 3D scene parameters.</p>
@@ -469,7 +553,7 @@ export const projects = [
       "Integrated the panel into the HP Oxygen diamond scanning software for Windows.",
     ],
     result: "Delivered an interactive, hybrid C++/Qt and ReactJS reporting module that enhanced solution visualization, interactivity, and integration within the diamond scanning workflow.",
-    images: [{ src: "/src/assets/solutions-report.png", square: true }]
+    images: [{ src: solutionsReport.src, square: true }]
   },
 
   {
@@ -478,7 +562,7 @@ export const projects = [
     period: "May 2019",
     category: "Web development, 3D Visualization, Application programming",
     company: "OctoNus Software, Moscow, Russia",
-    image: { src: "/src/assets/diamond-girdle-thickness-i3d.png", square: true },
+    image: { src: girdleThicknessI3d.src, square: true },
     tags: ["Algorithms", "HTML", "CSS", "JavaScript", "3D Visualization", "Qt WebEngine", "UI/UX"],
     summary: "Enhanced the Interactive 3D Report by implementing accurate girdle thickness visualization, final calculations, and a user legend.",
     overview: `<p>Worked on the <strong>Interactive 3D Report</strong> (HTML/CSS/JavaScript), a visualization tool for displaying diamond models and their parameters in a 3D scene integrated within a Qt WebEngine panel.</p>
@@ -493,7 +577,7 @@ export const projects = [
       "Ensured accurate representation and usability within the Qt WebEngine-based GUI panel."
     ],
     result: "Delivered a more precise and informative 3D report, enhancing visualization accuracy and usability for diamond girdle thickness analysis.",
-    images: [{ src: "/src/assets/diamond-girdle-thickness-i3d.png", square: true }]
+    images: [{ src: girdleThicknessI3d.src, square: true }]
   },
 
   {
@@ -502,7 +586,7 @@ export const projects = [
     period: "April 2019",
     category: "Application programming",
     company: "OctoNus Software, Moscow, Russia",
-    image: { src: "/src/assets/comparison-scanned-models-report.png", square: true },
+    image: { src: comparisonScannedModelsReport.src, square: true },
     tags: ["C++11", "Qt"],
     summary: "Developed a C++-based report system for comparing scanned diamond models, including statistical calculations and Excel export.",
     overview: `<p>Designed and developed a <strong>report generation module</strong> in C++ and Qt for comparing scanned diamond models within OctoNus’s <em>HP Oxygen</em> software.</p>
@@ -520,8 +604,8 @@ export const projects = [
     ],
     result: "Delivered a flexible and automated reporting module improving quality control, repeatability verification, and analytical efficiency within the diamond scanning workflow.",
     images: [
-      { src: "/src/assets/comparison-scanned-models-report.png", square: true },
-      { src: "/src/assets/comparison-scanned-models-report-brief.png", square: true }
+      { src: comparisonScannedModelsReport.src, square: true },
+      { src: comparisonScannedModelsReportBrief.src, square: true }
     ]
   },
 
@@ -531,7 +615,7 @@ export const projects = [
     period: "November 2018 – January 2019",
     category: "Application programming, 3D Visualization, Web development",
     company: "OctoNus Software, Moscow, Russia",
-    image: { src: "/src/assets/facets-multi-selection-tool-model.png", square: true },
+    image: { src: facetsMultiSelectionToolModel.src, square: true },
     tags: ["C++11", "Algorithms", "OpenGL", "Qt", "Qt WebEngine", "HTML", "CSS", "JavaScript", "3D Visualization", "UI/UX"],
     summary: "Developed an interactive OpenGL-based tool for multi-selecting facets in 3D scenes with integrated hint dialogs via Qt WebEngine.",
     overview: `<p>Designed and implemented a <strong>multi-selection tool</strong> for diamond facets within a 3D scene using <strong>C++</strong> and <strong>OpenGL</strong>. 
@@ -548,8 +632,8 @@ export const projects = [
     ],
     result: "Delivered an intuitive 3D interaction tool that enhanced visualization, model editing, and user feedback in the diamond processing workflow.",
     images: [
-      { src: "/src/assets/facets-multi-selection-tool-model.png", square: true },
-      { src: "/src/assets/facets-multi-selection-tool-legend.png", square: true },
+      { src: facetsMultiSelectionToolModel.src, square: true },
+      { src: facetsMultiSelectionToolLegend.src, square: true },
     ]
   },
 
@@ -559,7 +643,7 @@ export const projects = [
     period: "October 2018",
     category: "Application programming, 2D graphics, Web development",
     company: "OctoNus Software, Moscow, Russia",
-    image: { src: "/src/assets/polish-report-cylinder.png", square: true },
+    image: { src: polishReportCylinder.src, square: true },
     tags: ["C++11", "GDI+", "Algorithms", "HTML", "CSS", "JavaScript", "2D Graphics"],
     summary: "Developed a C++ and GDI+ report system visualizing polished cylinder geometry with dynamic HTML report rendering.",
     overview: `<p>Designed and developed an HTML/CSS/JavaScript report template for analyzing <strong>polished cylinder</strong> parameters including diameters and cross-sections.</p>
@@ -575,7 +659,7 @@ export const projects = [
       "Enabled automatic report viewing in the default system browser for quick access."
     ],
     result: "Delivered an accessible, data-driven visualization and reporting tool improving clarity and usability in polished cylinder analysis.",
-    images: [{ src: "/src/assets/polish-report-cylinder.png", square: true }]
+    images: [{ src: polishReportCylinder.src, square: true }]
   },
 
   {
@@ -584,7 +668,7 @@ export const projects = [
     period: "October 2017 – July 2018",
     category: "Web development, 3D Visualization, Application programming",
     company: "OctoNus Software, Moscow, Russia",
-    image: { src: "/src/assets/interactive-3d-report.png", square: true },
+    image: { src: interactive3dReport.src, square: true },
     tags: ["HTML", "CSS", "JavaScript", "C++11", "Qt", "Qt WebEngine", "3D Visualization", "Algorithms", "Software Architecture", "UI/UX"],
     summary: "Integrated interactive 3D reports for visualizing diamond models, enabling comparison, symmetry analysis, and seamless Qt–web interaction.",
     overview: `<p>Integrated <strong>Interactive 3D Reports</strong> built with <strong>HTML, CSS, and JavaScript</strong> to visualize diamond models and their parameters within a 3D scene. 
@@ -601,7 +685,7 @@ export const projects = [
       "Embedded the interactive 3D reporting module into HP Oxygen for Windows, enhancing analytical capabilities."
     ],
     result: "Delivered a unified, interactive 3D reporting environment that bridged web visualization and native C++ systems, elevating analytical and presentation capabilities in diamond modeling software.",
-    images: [{ src: "/src/assets/interactive-3d-report.png", square: true }]
+    images: [{ src: interactive3dReport.src, square: true }]
   },
 
   {
@@ -610,7 +694,7 @@ export const projects = [
     period: "July – September 2017",
     category: "Application programming, 2D graphics, Web development",
     company: "OctoNus Software, Moscow, Russia",
-    image: { src: "/src/assets/faceting-report.png", square: true },
+    image: { src: facetingReport.src, square: true },
     tags: ["C++11", "2D Graphics", "GDI+", "Algorithms", "HTML", "CSS", "JavaScript", "Qt", "UI/UX"],
     summary: "Developed a data-driven HTML faceting report system visualizing cutting sequences and results with C++ and GDI+ integration.",
     overview: `<p>Designed and implemented an <strong>HTML/CSS/JavaScript/JSON report template</strong> for examining <strong>faceting plans</strong> and the sequence of facet processing steps and outcomes.</p>
@@ -627,8 +711,8 @@ export const projects = [
     ],
     result: "Delivered a dynamic, visual reporting system that streamlined faceting analysis and enhanced presentation quality within HP Oxygen.",
     images: [
-      { src: "/src/assets/faceting-report.png", square: true },
-      { src: "/src/assets/faceting-report - oval-pavilion-main-wing.png", square: true }
+      { src: facetingReport.src, square: true },
+      { src: facetingReportOval.src, square: true }
     ]
   },
 
@@ -638,7 +722,7 @@ export const projects = [
     period: "August 2016 – July 2017",
     category: "Architecture design, Application programming",
     company: "OctoNus Software, Moscow, Russia",
-    image: { src: "/src/assets/settings-dialog-report-buttons-page.png", square: true },
+    image: { src: settingsDialogReportButtons.src, square: true },
     tags: ["C++11", "Qt", "UI/UX", "Software Architecture"],
     summary: "Designed a modular architecture and Qt-based GUI for centralized settings in HP Oxygen, integrating configurable pages from multiple plugins.",
     overview: `<p>Designed, developed, and implemented a <strong>centralized settings architecture</strong> and a <strong>Qt-based GUI</strong> within the company’s diamond scanning software, <em>HP Oxygen</em>.</p>
@@ -654,11 +738,11 @@ export const projects = [
     ],
     result: "Delivered a scalable and maintainable centralized settings framework that unified configuration management across HP Oxygen’s modular architecture.",
     images: [
-      { src: "/src/assets/settings-dialog-report-buttons-page.png", square: true },
-      { src: "/src/assets/settings-dialog-post-scan-export-page.png", square: true },
-      { src: "/src/assets/settings-dialog-post-scan-actions-page.png", square: true },
-      { src: "/src/assets/settings-dialog-scanning-general-page.png", square: true },
-      { src: "/src/assets/settings-dialog-shortcuts-page.png", square: true }
+      { src: settingsDialogReportButtons.src, square: true },
+      { src: settingsDialogPostScanExport.src, square: true },
+      { src: settingsDialogPostScanActions.src, square: true },
+      { src: settingsDialogScanningGeneral.src, square: true },
+      { src: settingsDialogShortcuts.src, square: true }
     ]
   },
 
@@ -668,7 +752,7 @@ export const projects = [
     period: "February – June 2016",
     category: "Application programming, Web development",
     company: "OctoNus Software, Moscow, Russia",
-    image: { src: "/src/assets/standard-report.png", square: true },
+    image: { src: standardReport.src, square: true },
     tags: ["C++11", "Qt", "Qt WebEngine", "HTML", "CSS", "JavaScript","UI/UX"],
     summary: "Developed HTML-based diamond grading reports with a Qt WebEngine viewer integrated into HP Oxygen.",
     overview: `<p>Designed and implemented <strong>HTML/CSS/JavaScript report templates</strong> for analyzing <strong>diamond parameters</strong> and <strong>grading</strong> across various cutting types.</p>
@@ -684,8 +768,8 @@ export const projects = [
     ],
     result: "Delivered a unified, interactive HTML reporting solution that improved post-scan analysis and presentation quality within HP Oxygen.",
     images: [
-      { src: "/src/assets/standard-report.png", square: true },
-      { src: "/src/assets/standard-report-tooltip.png", square: true },
+      { src: standardReport.src, square: true },
+      { src: standardReportTooltip.src, square: true }
     ]
   },
 
@@ -695,7 +779,7 @@ export const projects = [
     period: "November 2015 – February 2016",
     category: "Architecture design, Application programming",
     company: "OctoNus Software, Moscow, Russia",
-    image: { src: "/src/assets/asynchronous-logger.png", square: true },
+    image: { src: asynchronousLogger.src, square: true },
     tags: ["C++11", "Qt", "Logging System", "Software Architecture", "UI/UX"],
     summary: "Integrated an asynchronous logging subsystem (g3log) with a Qt-based GUI panel for real-time log monitoring in HP Oxygen.",
     overview: `<p>Integrated an <strong>asynchronous C++11 logger</strong> based on <strong>g3log</strong> into the company’s diamond scanning software, <em>HP Oxygen</em>. 
@@ -713,8 +797,8 @@ export const projects = [
     ],
     result: "Delivered a robust asynchronous logging system with an integrated Qt GUI panel, improving system observability, debugging, and workflow transparency within HP Oxygen.",
     images: [
-      { src: "/src/assets/asynchronous-logger.png", square: true },
-      { src: "/src/assets/asynchronous-logger-filter-completer.png", square: true }
+      { src: asynchronousLogger.src, square: true },
+      { src: asynchronousLoggerFilter.src, square: true }
     ]
   },
 
@@ -724,7 +808,7 @@ export const projects = [
     period: "August – October 2015",
     category: "Application programming, Installer development",
     company: "OctoNus Software, Moscow, Russia",
-    image: { src: "/src/assets/interactive-3d-reports-client.png", square: true },
+    image: { src: interactive3dReportsClient.src, square: true },
     tags: ["C++11", "Qt", "HTML", "UI/UX"],
     summary: "Developed a Windows application for browsing and launching HTML-based Interactive 3D Reports with XML metadata management.",
     overview: `<p>Developed a <strong>Windows desktop client</strong> that enables scanner operators and cutters to easily <strong>locate, open,</strong> and <strong>interact with HTML</strong>-based <strong>Interactive 3D Reports</strong> directly from their workstations.</p>
@@ -741,9 +825,9 @@ export const projects = [
     ],
     result: "Delivered a lightweight, user-friendly client application that simplified access to Interactive 3D Reports and improved workflow efficiency for operators and cutters.",
     images: [
-      { src: "/src/assets/interactive-3d-reports-client.png", square: true },
-      { src: "/src/assets/interactive-3d-reports-client-context-menu.png", square: true },
-      { src: "/src/assets/interactive-3d-reports-client-settings.png", square: true }
+      { src: interactive3dReportsClient.src, square: true },
+      { src: interactive3dReportsClientContextMenu.src, square: true },
+      { src: interactive3dReportsClientSettings.src, square: true }
     ]
   },
 
@@ -753,7 +837,7 @@ export const projects = [
     period: "August 2010 – August 2015",
     category: "Embedded software development and testing",
     company: "Moscow Scientific Research Television Institute, Moscow, Russia",
-    image: { src: "/src/assets/set-top-box-st.png", square: true },
+    image: { src: setTopBoxST.src, square: true },
     tags: ["C", "C++", "Shell Scripting", "Makefiles", "Embedded Linux", "DVB-T/T2", "Cross Compilers", "JTAG"],
     summary: "Developed, tested, and optimized software for DVB-T/T2 and IPTV set-top boxes across multiple embedded platforms and chipsets.",
     overview: `<p>Contributed to the <strong>development, refactoring,</strong> and <strong>testing</strong> of embedded software for <strong>DVB-T/T2</strong> and <strong>IPTV set-top boxes</strong> using platforms from Renesas Electronics, ST Electronics, NXP Semiconductors, ALi Corporation, and HiSilicon Technologies.</p>
@@ -772,9 +856,9 @@ export const projects = [
     ],
     result: "Delivered reliable, high-performance embedded software and validation workflows for multi-platform digital TV set-top boxes, supporting diverse hardware ecosystems and broadcast standards.",
     images: [
-      { src: "/src/assets/set-top-box-st.png", square: true },
-      { src: "/src/assets/set-top-box-ali.jpg", square: true },
-      { src: "/src/assets/set-top-box-jtag.jpg", square: true },
+      { src: setTopBoxST.src, square: true },
+      { src: setTopBoxAli.src, square: true },
+      { src: setTopBoxJtag.src, square: true },
     ]
   },
 
@@ -784,7 +868,7 @@ export const projects = [
     period: "January – April 2015",
     category: "Application programming",
     company: "Moscow Scientific Research Television Institute, Moscow, Russia",
-    image: { src: "/src/assets/aerodynamic-measurements-main.png", square: true },
+    image: { src: aerodynamicMeasurementsMain.src, square: true },
     tags: ["C++", "Qt", "UI/UX"],
     summary: "Developed aerodynamic measurement and control software for wind modeling experiments with turntable and laser sensor integration.",
     overview: `<p>Developed and tested <strong>aerodynamic measurement control software</strong> for the Windows platform, used in <strong>physical wind modeling experiments</strong> on scaled building models.</p>
@@ -801,11 +885,11 @@ export const projects = [
     ],
     result: "Delivered a functional aerodynamic measurement and control suite integrating hardware management, sensor data collection, and experiment automation for wind modeling research.",
     images: [
-      { src: "/src/assets/aerodynamic-measurements-main.png", square: true },
-      { src: "/src/assets/aerodynamic-measurements-settings.png", square: true },
-      { src: "/src/assets/aerodynamic-measurements-installer.png", square: true },
-      { src: "/src/assets/las-measurements-overview.png", square: true },
-      { src: "/src/assets/lika-ld200.png", square: true },
+      { src: aerodynamicMeasurementsMain.src, square: true },
+      { src: aerodynamicMeasurementsSettings.src, square: true },
+      { src: aerodynamicMeasurementsInstaller.src, square: true },
+      { src: lasMeasurementsOverview.src, square: true },
+      { src: likaLd200.src, square: true },
     ]
   },
 
@@ -815,7 +899,7 @@ export const projects = [
     period: "March 2013 – June 2014",
     category: "Algorithm design and implementation, Research and development project",
     company: "Moscow Scientific Research Television Institute, Moscow, Russia",
-    image: { src: "/src/assets/character-recognition.png", square: true },
+    image: { src: characterRecognition.src, square: true },
     tags: ["C++", "OpenCV", "Qt", "SQL", "Algorithms", "Multithreading"],
     summary: "Developed a character recognition algorithm for satellite TV telemetry images using OpenCV, FFT cross-correlation, and multithreading.",
     overview: `<p>Designed and implemented a <strong>character recognition algorithm</strong> for extracting telemetry data from <strong>satellite TV images</strong> through the detection of binary character patterns.</p>
@@ -834,9 +918,9 @@ export const projects = [
     ],
     result: "Delivered a performant, real-time character recognition system for satellite telemetry analysis, combining computer vision, and database integration.",
     images: [
-      { src: "/src/assets/character-recognition.png", square: true },
-      { src: "/src/assets/character-recognition-iss-joining.jpg", square: true },
-      { src: "/src/assets/character-recognition-image-processing-steps.png", square: true }
+      { src: characterRecognition.src, square: true },
+      { src: characterRecognitionIssJoining.src, square: true },
+      { src: characterRecognitionImageProcessing.src, square: true }
     ]
   },
 
@@ -846,7 +930,7 @@ export const projects = [
     period: "June – November 2012",
     category: "Web development",
     company: "Moscow Scientific Research Television Institute, Moscow, Russia",
-    image: { src: "/src/assets/samsung-smart-tv-widget.png", square: true },
+    image: { src: samsungSmartTvWidget.src, square: true },
     tags: ["CSS", "JavaScript"],
     summary: "Developed a prototype Samsung Smart TV widget providing structured public service information with remote control navigation.",
     overview: `<p>Designed, developed, and tested a <strong>JavaScript</strong>-based <strong>prototype widget</strong> for Samsung Smart TV aimed at providing clear, user-friendly access to information about public services in Russia.</p>
@@ -860,7 +944,7 @@ export const projects = [
       "Validated usability and performance across Smart TV firmware versions."
     ],
     result: "Delivered a functional prototype of a Smart TV widget for browsing public service information with intuitive remote-based interaction.",
-    images: [{ src: "/src/assets/samsung-smart-tv-widget.png", square: true }],
+    images: [{ src: samsungSmartTvWidget.src, square: true }],
   },
 
   {
@@ -869,7 +953,7 @@ export const projects = [
     period: "January – May 2012",
     category: "Device driver development",
     company: "Moscow Scientific Research Television Institute, Moscow, Russia",
-    image: { src: "/src/assets/porting-device-drivers.png", square: true },
+    image: { src: portingDeviceDrivers.src, square: true },
     tags: ["C", "C++", "Shell Scripting", "Embedded Linux", "Signal Processing"],
     summary: "Integrated and ported tuner and demodulator frontend drivers for DVB-T/T2 set-top boxes on a Renesas Embedded Linux platform.",
     overview: `<p>Integrated and adapted <strong>frontend device drivers</strong> (tuner and demodulator) for <strong>DVB-T and DVB-T2 set-top boxes</strong> operating on the Renesas Embedded Linux platform.</p>
@@ -887,10 +971,10 @@ export const projects = [
     ],
     result: "Delivered fully integrated and tested frontend drivers for DVB-T/T2 set-top boxes, ensuring stable I2C communication and reliable signal processing on Embedded Linux.",
     images: [
-      { src: "/src/assets/porting-device-drivers.png", square: true },
-      { src: "/src/assets/tuner-demod-host.png", square: true },
-      { src: "/src/assets/porting-device-drivers-demod.jpg", square: true }
-    ],
+      { src: portingDeviceDrivers.src, square: true },
+      { src: tunerDemodHost.src, square: true },
+      { src: portingDeviceDriversDemod.src, square: true }
+    ]
   },
 
   {
@@ -899,7 +983,7 @@ export const projects = [
     period: "August 2009 – July 2010",
     category: "Microcontroller programming, Embedded software development, Low-level debugging",
     company: "Moscow Scientific Research Television Institute, Moscow, Russia",
-    image: { src: "/src/assets/nec-k-line-taste-it-2.png", square: true },
+    image: { src: necKLineTasteIt2.src, square: true },
     tags: ["C", "I2C", "Embedded Linux", "Microcontrollers"],
     summary: "Developed firmware for the front panel of DVB-T/T2 set-top boxes, handling LED control, key input, and RC-5 remote decoding via I2C communication.",
     overview: `<p>Designed, implemented, and tested <strong>firmware for the front panel microcontroller</strong> of a digital set-top box using <strong>C</strong> in the <strong>IAR Embedded Workbench EW78K</strong> environment. 
@@ -917,10 +1001,10 @@ export const projects = [
     ],
     result: "Delivered reliable, production-ready firmware for front panel microcontrollers, ensuring synchronized control, accurate input handling, and seamless integration with set-top box CPUs.",
     images: [
-      { src: "/src/assets/nec-k-line-taste-it-2.png", square: true },
-      { src: "/src/assets/software-engineering-for-microcontrollers.jpg", square: true },
-      { src: "/src/assets/emma3sl-hd-dvb-t-stb.png", square: true },
-    ],
+      { src: necKLineTasteIt2.src, square: true },
+      { src: softwareEngineeringMicrocontrollers.src, square: true },
+      { src: emma3slHdDvbTStb.src, square: true },
+    ]
   },
 
   {
@@ -929,7 +1013,7 @@ export const projects = [
     period: "February – May 2009",
     category: "Research and Development Project",
     company: "Bauman Moscow State Technical University",
-    image: { src: "/src/assets/solar-panels-research-software.png", square: true },
+    image: { src: solarPanelsResearchSoftware.src, square: true },
     tags: ["C#", "UI/UX"],
     summary: "Developed a C# application for monitoring, analyzing, and visualizing solar panel efficiency based on real-time insolation data.",
     overview: `<p>Developed and tested an application for researching the <strong>insolation level and efficiency of solar panels</strong>. The software, written in C#, controls and monitors output current and voltage from sensors connected via a serial port.</p>
@@ -943,7 +1027,7 @@ export const projects = [
       "Packaged and deployed the research tool using InstallShield."
     ],
     result: "Delivered a robust research application that streamlined solar panel efficiency analysis and data visualization for academic experiments.",
-    images: [{ src: "/src/assets/solar-panels-research-software.png", square: true }]
+    images: [{ src: solarPanelsResearchSoftware.src, square: true }]
   },
 
   {
@@ -952,7 +1036,7 @@ export const projects = [
     period: "January – November 2008",
     category: "Application programming, Architecture design, Database development, Installer development, Testing",
     company: "Perimetrix, Moscow, Russia",
-    image: { src: "/src/assets/confidentiality-protection-and-data-integrity.jpg", square: true },
+    image: { src: confidentialityProtectionDataIntegrity.src, square: true },
     tags: ["C++", "C#", "MFC", "SQL", "UML"],
     summary: "Contributed to the Perimetrix SafeSpace DLP system, developing core modules of the SafeEdge subsystem for real-time document monitoring and data protection.",
     overview: `<p>Actively contributed to the development team of the <strong>Perimetrix SafeSpace Data Loss Prevention (DLP) System</strong>, focusing on the <strong>SafeEdge subsystem</strong> – a real-time solution for monitoring and protecting documents leaving the corporate network perimeter.</p>
@@ -967,7 +1051,7 @@ export const projects = [
       "Tested and debugged system modules using WinDbg and custom test cases."
     ],
     result: "Delivered key software components and tools that enhanced Perimetrix’s data loss prevention capabilities, ensuring secure handling of confidential corporate information.",
-    images: [{ src: "/src/assets/confidentiality-protection-and-data-integrity.jpg", square: true }]
+    images: [{ src: confidentialityProtectionDataIntegrity.src, square: true }]
   },
 
   {
@@ -976,7 +1060,7 @@ export const projects = [
     period: "March 2007 – January 2008",
     category: "Test-system development",
     company: "MCST, Moscow, Russia",
-    image: { src: "/src/assets/test-system-for-computing-complex.png", square: true },
+    image: { src: testSystemForComputingComplex.src, square: true },
     tags: ["C", "Shell Scripting", "Linux", "Test Automation"],
     summary: "Developed automated testing and build scripts for a Linux-based computing complex, enhancing test coverage and kernel deployment efficiency.",
     overview: `<p>Worked as part of a development team responsible for software testing and validation of a <strong>computing complex</strong> at MCST. The role involved designing and modifying <strong>test programs for hardware devices</strong> using C and Shell scripting.</p>
@@ -990,7 +1074,7 @@ export const projects = [
       "Contributed to integration and validation processes within a multi-component computing architecture."
     ],
     result: "Delivered a stable and automated testing system that reduced manual effort and improved efficiency of the Linux-based computing complex validation cycle.",
-    images: [{ src: "/src/assets/test-system-for-computing-complex.png", square: true }]
+    images: [{ src: testSystemForComputingComplex.src, square: true }]
   }
 
 ];
